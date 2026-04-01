@@ -1,95 +1,325 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
   <html lang="en">
   <head>
   <meta charset="UTF-8">
   <title>Sharda Library</title>
   <style>
-    :root { --primary:#2c7a7b; --accent:#f6c567;
-  --bg:#f0f4f8; }
-    body { font-family:Arial,Helvetica,sans-serif;
-  margin:0; background:var(--bg); color:#333; }
-    .header { display:flex; justify-content:space-between;
-  align-items:center; background:var(--primary);
-  padding:1rem; color:#fff; }
-    .header img { height:40px; }
-    .header .actions { display:flex; gap:1rem; }
-    .header button { background:var(--accent); border:none;
-   padding:0.5rem 1rem; cursor:pointer; border-radius:4px;
-  }
-    .content { padding:1rem; max-width:900px; margin:auto;
-  }
-    .facilities { display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-   gap:1rem; margin:2rem 0; }
-    .facility { text-align:center; }
-    .facility img { width:80px; height:80px;
-  object-fit:cover; border-radius:8px; background:#fff;
-  padding:0.5rem; }
-    .booking { background:#fff; padding:1rem;
-  border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);
-  }
-    .booking h2 { margin-top:0; }
-    .seats { display:flex; flex-wrap:wrap; gap:0.5rem;
-  margin:1rem 0; }
-    .seat { background:#e1e8ed; padding:0.5rem 1rem;
-  border-radius:4px; cursor:pointer; transition:background
-  0.2s; }
-    .seat:hover { background:#d2e0e6; }
-    .seat.booked { background:#a3d9a5; color:#fff; }
-    .seat.confirmed { background:#48bb78; color:#fff; }
-    .seat.available { background:#c0d6d6; color:#fff; }
-    .seat.selected { background:var(--primary); color:#fff;
-   }
-    .count { font-weight:bold; margin-bottom:1rem; }
-    .msg { margin:1rem 0; padding:0.75rem;
-  border-radius:4px; }
-    .expired { background:#ffdddd; }
-    .expired a { color:#c0392b; }
+    :root {
+      --primary: #2c7a7b;
+      --accent: #f6c567;
+      --bg: #f0f4f8;
+      --card-bg: #ffffff;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --text: #333;
+      --text-light: #666;
+      --text-dark: #222;
+      --success: #48bb78;
+      --error: #c0392b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8 0%, #e0e7f0 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      padding: 1.5rem 2rem;
+      color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .header img {
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .header .actions {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .header button {
+      background: var(--accent);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .header button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .header button:active {
+      transform: translateY(0);
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .hero {
+      background: url('library-bg.jpg') no-repeat center/cover;
+      height: 300px;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .facilities {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .facility {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .facility:hover {
+      transform: translateY(-5px);
+    }
+
+    .facility img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+    }
+
+    .facility h3 {
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .facility p {
+      color: var(--text-light);
+    }
+
+    .booking {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      margin-top: 2rem;
+    }
+
+    .booking h2 {
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .booking h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .seats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .seat {
+      background: var(--card-bg);
+      border: 2px solid var(--text-light);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .seat:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .seat.booked {
+      border-color: var(--success);
+      background: #e8f5e9;
+    }
+
+    .seat.booked::after {
+      content: 'Booked';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .seat.confirmed {
+      border-color: var(--success);
+      background: #e8f5e9;
+    }
+
+    .seat.available {
+      border-color: var(--text-light);
+    }
+
+    .seat.selected {
+      border-color: var(--accent);
+      background: #e0e7f0;
+    }
+
+    .seat.selected::after {
+      content: 'Selected';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .seat-count {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .msg {
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .msg.error {
+      background: #ffebee;
+      color: #c0392b;
+    }
+
+    .msg.success {
+      background: #e8f5e9;
+      color: #48bb78;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #eee;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .facilities {
+        grid-template-columns: 1fr;
+      }
+
+      .seat {
+        font-size: 0.9rem;
+      }
+    }
   </style>
   </head>
   <body>
   <header class="header">
-    <img src="logo.png" alt="Library Logo">
+    <img src="logo.png" alt="Sharda Library">
     <div class="actions">
       <button id="bookBtn">Book Seat</button>
     </div>
   </header>
 
   <main class="content">
-    <h1>Sharda Library</h1>
-    <p>Welcome to Sharda Library – a vibrant space for
-  students and readers.</p>
+    <div class="hero"></div>
 
-    <div class="count" id="seatCount">Available Seats:
-  <span id="count">18</span></div>
+    <h1>Sharda Library</h1>
+    <p>Welcome to Sharda Library – a vibrant space for students and readers.</p>
+
+    <div class="count" id="seatCount">Available Seats: <span id="count">18</span></div>
 
     <div class="booking">
       <h2>Reserve a Seat</h2>
       <div class="seats" id="seats"></div>
       <div id="message" class="msg"></div>
-      <small>Seats automatically cancel if not confirmed
-  within <strong>2 days</strong>.</small>
+      <small>Seats automatically cancel if not confirmed within <strong>2 days</strong>.</small>
     </div>
 
     <section class="facilities">
       <div class="facility">
         <img src="ro-purifier.png" alt="RO Water Purifier">
-        <p>RO Water Purifier</p>
+        <h3>RO Water Purifier</h3>
+        <p>Clean drinking water available at all times.</p>
       </div>
       <div class="facility">
         <img src="restroom.png" alt="Clean Restrooms">
-        <p>Hygienic Restrooms</p>
+        <h3>Clean Restrooms</h3>
+        <p>Well-maintained facilities for all users.</p>
       </div>
       <div class="facility">
         <img src="shoe.png" alt="Shoe Storage">
-        <p>Shoe Storage</p>
+        <h3>Shoe Storage</h3>
+        <p>Secure storage for personal belongings.</p>
       </div>
       <div class="facility">
-        <img src="ac.png" alt="Air‑Conditioned Rooms">
-        <p>Air‑Conditioned Rooms</p>
+        <img src="ac.png" alt="Air-Conditioned Rooms">
+        <h3>Air-Conditioned Rooms</h3>
+        <p>Comfortable study environment.</p>
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Sharda Library. All rights reserved.</p>
+  </footer>
 
   <script>
     const TOTAL_SEATS = 18;
@@ -97,10 +327,8 @@
     const EXPIRY_MS = 2 * 24 * 60 * 60 * 1000; // 2 days
 
     // Load or init booking data
-    let bookings =
-  JSON.parse(localStorage.getItem(BOOKING_KEY)||'{}');
-    let seatCount = TOTAL_SEATS -
-  Object.keys(bookings).length;
+    let bookings = JSON.parse(localStorage.getItem(BOOKING_KEY)||'{}');
+    let seatCount = TOTAL_SEATS - Object.keys(bookings).length;
 
     function renderSeats() {
       const container = document.getElementById('seats');
@@ -116,59 +344,50 @@
         seatDiv.onclick = () => selectSeat(i);
         container.appendChild(seatDiv);
       }
-      document.getElementById('count').textContent =
-  seatCount;
+      document.getElementById('count').textContent = seatCount;
     }
 
     function selectSeat(id) {
       // remove previous selection
-      document.querySelectorAll('.seat.selected').forEach(e
-  l=>el.classList.remove('selected'));
+      document.querySelectorAll('.seat.selected').forEach(el=>el.classList.remove('selected'));
       // mark new selection
-      const sel =
-  document.getElementById('seats').children[id-1];
+      const sel = document.getElementById('seats').children[id-1];
       sel.classList.add('selected');
     }
 
     function confirmBooking() {
-      const selected =
-  document.querySelector('.seat.selected');
-      if(!selected) { showMsg('Please select a seat
-  first.', true); return; }
-      const seatId = selected.textContent.replace('Seat
-  ','');
-      if(bookings[seatId]) { showMsg('Seat already
-  booked.', true); return; }
+      const selected = document.querySelector('.seat.selected');
+      if(!selected) { showMsg('Please select a seat first.', true); return; }
+      const seatId = selected.textContent.replace('Seat ','');
+      if(bookings[seatId]) { showMsg('Seat already booked.', true); return; }
       bookings[seatId] = Date.now();
-      localStorage.setItem(BOOKING_KEY,
-  JSON.stringify(bookings));
+      localStorage.setItem(BOOKING_KEY, JSON.stringify(bookings));
       seatCount--;
       selected.classList.remove('selected');
       selected.classList.add('booked','confirmed');
       renderSeats();
-      showMsg(`Seat ${seatId} booked! You have 2 days to
-  confirm.`, false);
+      showMsg(`Seat ${seatId} booked! You have 2 days to confirm.`, false);
       setTimeout(releaseSeat, EXPIRY_MS, seatId);
     }
 
     function releaseSeat(seatId) {
       if(!bookings[seatId]) return;
       delete bookings[seatId];
-      localStorage.setItem(BOOKING_KEY,
-  JSON.stringify(bookings));
+      localStorage.setItem(BOOKING_KEY, JSON.stringify(bookings));
       seatCount++;
       renderSeats();
-      showMsg(`Booking for Seat ${seatId} expired and was
-  released.`, true);
+      showMsg(`Booking for Seat ${seatId} expired and was released.`, true);
     }
 
     function showMsg(text, isError) {
       const msg = document.getElementById('message');
       msg.textContent = text;
-      msg.style.background = isError ? '#ffebee' :
-  '#e8f5e9';
-      msg.style.border = '1px solid ' +
-  (isError?'#c62828':'#2e7d32');
+      msg.style.background = isError ? '#ffebee' : '#e8f5e9';
+      msg.style.border = '1px solid ' + (isError?'#c0392b':'#48bb78');
+      msg.style.display = 'block';
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, 3000);
     }
 
     // Auto‑expire old bookings on page load
@@ -180,8 +399,7 @@
           seatCount++;
         }
       });
-      localStorage.setItem(BOOKING_KEY,
-  JSON.stringify(bookings));
+      localStorage.setItem(BOOKING_KEY, JSON.stringify(bookings));
       renderSeats();
     }
 
@@ -190,8 +408,7 @@
     renderSeats();
 
     // Event listeners
-    document.getElementById('bookBtn').onclick =
-  confirmBooking;
+    document.getElementById('bookBtn').onclick = confirmBooking;
   </script>
   </body>
   </html>
