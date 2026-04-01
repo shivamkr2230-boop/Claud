@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RN Herbal — Stone-Go | पथरी का प्राकृतिक समाधान</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ROOT & RESET
+============================================================ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Hind',sans-serif;background:#fff;color:#1a1a1a;padding-bottom:80px;overflow-x:hidden;}
+:root{
+  --g1:#1b6b3a;--g2:#2e9c57;--g3:#4cbb78;--g4:#e6f7ed;
+  --red:#c0392b;--orange:#d4600a;--gold:#c9910a;
+  --white:#fff;--lgray:#f7f7f7;--dark:#1a1a1a;--gray:#555;
+}
+/* ============================================================
+   IMAGE PLACEHOLDER SYSTEM
+============================================================ */
+.img-placeholder{
+  background:linear-gradient(135deg,#e8f5ee 0%,#d4edda 50%,#c3e6cb 100%);
+  border:2px dashed var(--g2);
+  border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:16px 12px;
+  position:relative;overflow:hidden;
+  min-height:120px;
+}
+.img-placeholder::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(46,156,87,.05) 8px,rgba(46,156,87,.05) 16px);
+}
+.img-placeholder .ph-icon{font-size:2rem;margin-bottom:6px;position:relative;z-index:1;}
+.img-placeholder .ph-title{font-size:.78rem;font-weight:700;color:var(--g1);margin-bottom:3px;position:relative;z-index:1;}
+.img-placeholder .ph-hint{font-size:.66rem;color:var(--g2);position:relative;z-index:1;line-height:1.4;}
+.img-placeholder .ph-size{
+  position:absolute;top:6px;right:8px;
+  font-size:.6rem;background:var(--g1);color:#fff;
+  padding:2px 6px;border-radius:6px;
+}
+/* Small placeholder for symptom cards */
+.img-ph-sm{min-height:70px;width:80px;flex-shrink:0;border-radius:8px;padding:8px 6px;}
+.img-ph-sm .ph-icon{font-size:1.2rem;margin-bottom:2px;}
+.img-ph-sm .ph-title{font-size:.58rem;}
+.img-ph-sm .ph-hint{display:none;}
+/* Medium placeholder */
+.img-ph-md{min-height:100px;width:100%;}
+/* Large placeholder */
+.img-ph-lg{min-height:180px;width:100%;}
+/* Hero placeholder */
+.img-ph-hero{min-height:140px;width:100%;border-radius:10px;margin-bottom:10px;}
+/* Herb placeholder */
+.img-ph-herb{width:60px;height:50px;min-height:50px;border-radius:8px;flex-shrink:0;padding:6px 4px;}
+.img-ph-herb .ph-icon{font-size:1rem;margin-bottom:0;}
+.img-ph-herb .ph-title{font-size:.55rem;}
+/* Step placeholder */
+.img-ph-step{width:70px;height:60px;min-height:60px;flex-shrink:0;border-radius:8px;padding:6px;}
+/* VS card placeholder */
+.img-ph-vs{width:100%;height:80px;min-height:80px;border-radius:8px;margin-bottom:8px;}
+/* Testimonial photo */
+.img-ph-testi{width:100%;height:160px;min-height:160px;border-radius:10px;margin-bottom:12px;}
+/* BA placeholder */
+.img-ph-ba{width:100%;height:200px;min-height:200px;border-radius:10px 10px 0 0;}
+
+/* ============================================================
+   STICKY TOP NAV
+============================================================ */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  background:var(--g1);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;box-shadow:0 2px 10px rgba(0,0,0,.25);
+}
+.brand-name{font-family:'Baloo 2',cursive;font-size:1.2rem;color:#fff;font-weight:800;display:flex;flex-direction:column;line-height:1.1;}
+.brand-name small{font-size:.6rem;font-weight:400;opacity:.8;letter-spacing:1.5px;text-transform:uppercase;}
+.nav-links-row{display:none;}
+@media(min-width:600px){.nav-links-row{display:flex;gap:16px;list-style:none;}
+  .nav-links-row a{color:rgba(255,255,255,.85);font-size:.75rem;text-decoration:none;font-weight:600;}}
+.nav-order-btn{background:var(--gold);color:#fff;padding:8px 18px;border-radius:20px;font-size:.82rem;font-weight:700;box-shadow:0 3px 10px rgba(0,0,0,.2);text-decoration:none;}
+
+/* ============================================================
+   HERO
+============================================================ */
+#hero{
+  margin-top:56px;
+  background:linear-gradient(160deg,#1b6b3a 0%,#2e9c57 60%,#4cbb78 100%);
+  padding:28px 16px 40px;text-align:center;position:relative;overflow:hidden;
+}
+#hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:30px;background:#fff;clip-path:ellipse(55% 100% at 50% 100%);}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.18);color:#fff;font-size:.7rem;letter-spacing:2px;padding:4px 14px;border-radius:12px;margin-bottom:10px;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);}
+.hero-brand{font-family:'Baloo 2',cursive;font-size:2rem;color:#fff;font-weight:800;line-height:1.1;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.2);}
+.hero-brand span{color:#ffe066;}
+.hero-sub-title{font-size:.85rem;color:rgba(255,255,255,.85);margin-bottom:18px;}
+.hero-question-box{background:#fff;border-radius:14px;padding:16px;margin:0 auto 16px;max-width:400px;text-align:left;box-shadow:0 4px 20px rgba(0,0,0,.15);}
+.hero-q-text{font-size:1rem;font-weight:700;color:var(--dark);line-height:1.4;margin-bottom:6px;}
+.hero-q-text span{color:var(--red);}
+.hero-warning{background:#fff8e1;border-radius:8px;padding:12px 14px;border-left:4px solid var(--gold);margin-top:8px;}
+.hero-warning p{font-size:.88rem;color:var(--dark);line-height:1.6;}
+.hero-warning strong{color:var(--g1);}
+.trust-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0;}
+.trust-pill{background:rgba(255,255,255,.15);color:#fff;font-size:.72rem;padding:4px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.3);}
+.hero-product-wrap{display:flex;gap:12px;justify-content:center;margin:16px 0;flex-wrap:wrap;}
+.prod-mini{background:#fff;border-radius:12px;padding:14px 12px;width:145px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.15);}
+.prod-mini h4{font-size:.82rem;font-weight:700;color:var(--g1);margin-bottom:3px;}
+.prod-mini p{font-size:.68rem;color:var(--gray);}
+.prod-mini .ptag{font-size:.62rem;background:var(--g1);color:#fff;padding:2px 6px;border-radius:8px;display:inline-block;margin-top:4px;}
+
+/* ============================================================
+   STICKY BOTTOM BAR
+============================================================ */
+.sticky-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:950;
+  background:var(--g1);padding:10px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  box-shadow:0 -2px 16px rgba(0,0,0,.25);
+}
+.sticky-info{font-size:.7rem;color:rgba(255,255,255,.85);}
+.sticky-info .features{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:3px;}
+.sticky-info .features span{font-size:.63rem;}
+.timer{font-size:1rem;font-weight:700;color:#ffe066;font-family:monospace;}
+.sticky-order-btn{background:var(--gold);color:#fff;padding:10px 18px;border-radius:20px;font-size:.82rem;font-weight:700;white-space:nowrap;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.25);flex-shrink:0;}
+
+/* ============================================================
+   SECTION BASE
+============================================================ */
+.sec{padding:36px 16px;}
+.sec-title{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;color:var(--dark);text-align:center;margin-bottom:6px;line-height:1.3;}
+.sec-title span{color:var(--g1);}
+.sec-sub{text-align:center;font-size:.85rem;color:var(--gray);margin-bottom:20px;line-height:1.6;}
+.gd{width:48px;height:3px;background:var(--g2);border-radius:2px;margin:8px auto 20px;}
+
+/* ============================================================
+   TRUST BADGES
+============================================================ */
+#s-trust1{background:var(--g4);}
+.trust3-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
+.t3badge{background:#fff;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #d4edda;min-width:130px;}
+.t3badge .icon{font-size:1.3rem;}
+.t3badge p{font-size:.78rem;font-weight:600;color:var(--g1);}
+.trust-big-banner{background:var(--g1);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:10px;max-width:380px;margin:0 auto;}
+.trust-big-banner .icon{font-size:1.6rem;}
+.trust-big-banner p{font-size:.9rem;font-weight:700;}
+
+/* ============================================================
+   SYMPTOMS
+============================================================ */
+#s-symptoms{background:#fff;}
+.symptom-header{background:linear-gradient(135deg,#fff5f5,#ffe8e8);border-radius:12px;padding:14px 16px;text-align:center;border:2px solid #ffcccc;margin-bottom:20px;}
+.symptom-header p{font-size:1rem;font-weight:700;color:var(--red);line-height:1.5;}
+.symptom-header p span{color:var(--g1);}
+.symptom-card{border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.symptom-card.red-bg{background:#fff0f0;border:1px solid #ffd5d5;}
+.symptom-card.pink-bg{background:#fff5f8;border:1px solid #ffd6e7;}
+.symptom-card.yellow-bg{background:#fffbf0;border:1px solid #ffe8a0;}
+.symptom-card .sc-right h4{font-size:.92rem;font-weight:700;color:var(--red);margin-bottom:3px;}
+.symptom-card .sc-right p{font-size:.75rem;color:var(--gray);line-height:1.4;}
+
+/* ============================================================
+   PRODUCT INTRO
+============================================================ */
+#s-product{background:linear-gradient(160deg,var(--g1),var(--g2));padding:36px 16px;text-align:center;color:#fff;}
+.prod-name-big{font-family:'Baloo 2',cursive;font-size:2.2rem;font-weight:800;color:#ffe066;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.2);}
+.prod-tagline{font-size:1rem;color:rgba(255,255,255,.9);margin-bottom:20px;}
+.prod-bottle{background:#fff;border-radius:16px;padding:20px;max-width:280px;margin:0 auto 20px;box-shadow:0 8px 32px rgba(0,0,0,.2);}
+.prod-bottle h3{font-size:1rem;font-weight:700;color:var(--g1);margin-bottom:6px;}
+.prod-bottle .caps{font-size:.75rem;background:var(--g1);color:#fff;padding:3px 10px;border-radius:10px;display:inline-block;}
+.no-surg-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:10px 20px;border-radius:12px;font-size:1rem;font-weight:700;margin-bottom:16px;}
+.prod-checks{background:rgba(255,255,255,.12);border-radius:12px;padding:16px;max-width:340px;margin:0 auto 16px;text-align:left;}
+.prod-check-item{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+.prod-check-item:last-child{border-bottom:none;}
+.prod-check-item .ck{color:#ffe066;font-weight:700;font-size:1rem;flex-shrink:0;margin-top:2px;}
+.prod-check-item p{font-size:.88rem;color:rgba(255,255,255,.95);line-height:1.4;}
+.prod-check-item strong{color:#ffe066;}
+.cert-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.cert-b{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:8px;font-size:.75rem;font-weight:700;}
+
+/* ============================================================
+   4-STEP
+============================================================ */
+#s-steps{background:#fff;}
+.step4-card{background:var(--lgray);border-radius:12px;padding:16px;display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;border-left:4px solid var(--g2);}
+.step4-card .sc-right h4{font-size:.92rem;font-weight:700;margin-bottom:4px;}
+.step4-card .sc-right h4 span{color:var(--g2);}
+.step4-card .sc-right p{font-size:.8rem;color:var(--gray);line-height:1.5;}
+.step4-card .sc-right em{font-size:.72rem;color:var(--g1);font-style:normal;opacity:.8;}
+
+/* ============================================================
+   WHY STONE CARE
+============================================================ */
+#s-why{background:var(--g4);}
+.cause-box{background:#fff;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.cause-box h4{font-size:.92rem;font-weight:700;color:var(--g1);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.cause-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;margin-bottom:6px;}
+.cause-item.heat{background:#fff5e0;}.cause-item.dry{background:#fff8e8;}.cause-item.tox{background:#f5f0ff;}
+.cause-item .ci{font-size:1.2rem;flex-shrink:0;}
+.cause-item p{font-size:.85rem;font-weight:600;color:var(--dark);}
+.cause-item small{display:block;font-size:.72rem;color:var(--gray);font-weight:400;}
+.vs-divider{display:flex;align-items:center;gap:12px;margin:16px 0;}
+.vs-divider .line{flex:1;height:2px;background:linear-gradient(90deg,transparent,var(--g2));}
+.vs-divider .line.r{background:linear-gradient(270deg,transparent,var(--g2));}
+.vs-circle{width:44px;height:44px;border-radius:50%;background:var(--g1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;flex-shrink:0;}
+.ayur-box{background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:12px;padding:16px;color:#fff;}
+.ayur-box h4{font-size:.92rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.ayur-item{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,.12);border-radius:8px;padding:10px;margin-bottom:8px;}
+.ayur-item .num{width:26px;height:26px;border-radius:50%;background:#ffe066;color:var(--g1);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;flex-shrink:0;}
+.ayur-item p{font-size:.83rem;line-height:1.4;color:rgba(255,255,255,.95);}
+.ayur-item strong{color:#ffe066;}
+.result-banner{background:var(--g2);color:#fff;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;margin-top:12px;}
+.result-banner .icon{font-size:1.4rem;}
+.result-banner p{font-size:.88rem;font-weight:700;}
+.modern-diff{background:#fff3e0;border-radius:12px;padding:14px 16px;margin-top:14px;border-left:4px solid var(--orange);}
+.modern-diff h4{font-size:.88rem;font-weight:700;color:var(--orange);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.modern-diff p{font-size:.83rem;color:var(--dark);line-height:1.6;}
+
+/* ============================================================
+   HERBS
+============================================================ */
+#s-herbs{background:linear-gradient(160deg,var(--g1),#145a2e);padding:36px 16px;}
+.herb-card{background:#fff;border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.herb-left{display:flex;align-items:center;gap:12px;}
+.herb-left h4{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:700;color:var(--g1);margin-bottom:2px;}
+.herb-left p{font-size:.75rem;color:var(--gray);}
+.herb-icon{font-size:1.6rem;}
+
+/* ============================================================
+   VS COMPARISON
+============================================================ */
+#s-vs{background:#fff;}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.vs-card{border-radius:10px;padding:12px;text-align:center;}
+.vs-card.bad{background:#fff0f0;border:2px solid #ffcccc;}
+.vs-card.good{background:#e8f5ee;border:2px solid #b7e4c7;}
+.vs-card .label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.vs-card.bad .label{color:var(--red);}
+.vs-card.good .label{color:var(--g1);}
+.vs-card h4{font-size:.82rem;font-weight:700;line-height:1.3;}
+.vs-card.bad h4{color:var(--red);}
+.vs-card.good h4{color:var(--g1);}
+.winner-banner{background:var(--g2);color:#fff;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px;margin-top:16px;box-shadow:0 4px 16px rgba(46,156,87,.3);}
+.winner-banner .icon{font-size:1.6rem;}
+.winner-banner div h4{font-size:.95rem;font-weight:700;}
+.winner-banner div p{font-size:.75rem;opacity:.9;}
+
+/* ============================================================
+   HOW TO USE
+============================================================ */
+#s-howto{background:linear-gradient(160deg,var(--g1),var(--g2));padding:36px 16px;}
+.howto-timeline{position:relative;padding-left:50px;margin-top:8px;}
+.howto-timeline::before{content:'';position:absolute;left:20px;top:10px;bottom:10px;width:2px;background:rgba(255,255,255,.3);}
+.howto-step{position:relative;margin-bottom:14px;}
+.howto-step .num{position:absolute;left:-50px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:var(--g1);border:2px solid rgba(255,255,255,.4);}
+.howto-step:nth-child(1) .num{background:#ffe066;}
+.howto-step:nth-child(2) .num{background:#87ceeb;}
+.howto-step:nth-child(3) .num{background:#90ee90;}
+.howto-step:nth-child(4) .num{background:#ffb347;}
+.howto-card{background:rgba(255,255,255,.12);border-radius:12px;padding:14px 16px;border:1px solid rgba(255,255,255,.15);}
+.howto-card h4{font-size:.95rem;font-weight:700;color:#ffe066;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.howto-card p{font-size:.83rem;color:rgba(255,255,255,.9);line-height:1.5;margin-bottom:4px;}
+.howto-card .tip{font-size:.75rem;background:rgba(255,255,255,.1);padding:4px 10px;border-radius:6px;display:inline-flex;align-items:center;gap:4px;color:rgba(255,255,255,.85);}
+
+/* ============================================================
+   CERTIFICATIONS
+============================================================ */
+#s-certs{background:var(--lgray);}
+.cert-card{background:#fff;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid var(--g2);}
+.cert-logo{width:56px;height:56px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;}
+.cert-logo.fssai{background:#e8f5ee;}
+.cert-logo.iso{background:#e3f2fd;}
+.cert-logo.gmp{background:#e8f5ee;}
+.cert-logo.nat{background:#f1f8e9;}
+.cert-logo.noside{background:#fff3e0;}
+.cert-card h4{font-size:.92rem;font-weight:700;color:var(--g1);margin-bottom:3px;}
+.cert-card p{font-size:.78rem;color:var(--gray);line-height:1.4;}
+
+/* ============================================================
+   PRICING
+============================================================ */
+#s-price{background:#fff;}
+.price-box{background:linear-gradient(135deg,#e8f5ee,#f0fff4);border-radius:16px;padding:24px 16px;border:2px solid var(--g3);max-width:400px;margin:0 auto;text-align:center;box-shadow:0 8px 32px rgba(46,156,87,.15);}
+.price-box .combo-label{background:var(--red);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:12px;text-transform:uppercase;}
+.orig-price{font-size:.9rem;color:#aaa;text-decoration:line-through;margin-bottom:2px;}
+.disc-price{font-size:2.8rem;font-weight:800;color:var(--red);line-height:1;font-family:'Baloo 2',cursive;}
+.save-tag{background:#fff3cd;color:#856404;font-size:.78rem;font-weight:700;padding:4px 12px;border-radius:8px;display:inline-block;margin:8px 0 16px;}
+.includes-list{text-align:left;margin-bottom:16px;}
+.inc-item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #d4edda;font-size:.88rem;color:var(--dark);}
+.inc-item:last-child{border-bottom:none;}
+.inc-item .ck{color:var(--g2);font-size:1rem;font-weight:700;}
+.btn-3d-green{display:block;width:100%;background:linear-gradient(180deg,#2ecc71 0%,#27ae60 50%,#1e8449 100%);color:#fff;padding:16px;border-radius:10px;font-size:1rem;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 7px 0 #0d4a25,0 9px 20px rgba(0,0,0,.25);transform:translateY(0);transition:all .12s;border:none;cursor:pointer;animation:pulse3d 2.5s infinite;font-family:'Hind',sans-serif;}
+.btn-3d-green:hover{transform:translateY(3px);box-shadow:0 4px 0 #0d4a25,0 5px 10px rgba(0,0,0,.2);}
+@keyframes pulse3d{0%,100%{box-shadow:0 7px 0 #0d4a25,0 9px 20px rgba(0,0,0,.25),0 0 0 0 rgba(39,174,96,0);}50%{box-shadow:0 7px 0 #0d4a25,0 9px 20px rgba(0,0,0,.25),0 0 0 12px rgba(39,174,96,.15);}}
+.guarantee-strip{display:flex;align-items:center;gap:8px;background:var(--g4);border-radius:8px;padding:10px 12px;margin-top:12px;}
+.guarantee-strip .icon{font-size:1.3rem;}
+.guarantee-strip p{font-size:.78rem;color:var(--g1);font-weight:600;line-height:1.4;}
+
+/* ============================================================
+   BEFORE / AFTER  (NEW)
+============================================================ */
+#s-ba{background:var(--lgray);}
+.ba-wrap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+.ba-card{border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1);}
+.ba-label{padding:14px;font-weight:700;font-size:.88rem;}
+.ba-label.before{background:#ffeaea;color:var(--red);}
+.ba-label.after{background:#e8f5ee;color:var(--g1);}
+.ba-label ul{list-style:none;margin-top:6px;display:flex;flex-direction:column;gap:4px;}
+.ba-label ul li{font-size:.72rem;font-weight:400;color:var(--gray);}
+
+/* ============================================================
+   VIDEO TESTIMONIALS  (NEW — MOBILE OPTIMISED)
+============================================================ */
+#s-videos{background:var(--g1);padding:36px 0 36px;}
+#s-videos .sec-title{color:#ffe066;padding:0 16px;}
+#s-videos .sec-sub{color:rgba(255,255,255,.8);padding:0 16px;}
+#s-videos .gd{background:#ffe066;}
+.vid-slider-wrap{position:relative;overflow:hidden;}
+.vid-slider{
+  display:flex;gap:14px;
+  overflow-x:auto;padding:0 16px 16px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+.vid-slider::-webkit-scrollbar{height:4px;}
+.vid-slider::-webkit-scrollbar-track{background:rgba(255,255,255,.1);}
+.vid-slider::-webkit-scrollbar-thumb{background:#ffe066;border-radius:2px;}
+.vid-card{
+  min-width:calc(100vw - 64px);max-width:320px;
+  flex-shrink:0;scroll-snap-align:start;
+  background:#fff;border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 6px 24px rgba(0,0,0,.25);
+}
+.vid-thumb{
+  width:100%;height:190px;
+  background:linear-gradient(135deg,#1b3a2d,#1b6b3a);
+  position:relative;overflow:hidden;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.vid-thumb .ph-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#0d2e1a,#1b6b3a,#2e9c57);
+  opacity:.85;
+}
+.vid-thumb .play-circle{
+  width:62px;height:62px;border-radius:50%;
+  background:rgba(255,255,255,.95);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;z-index:2;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+  transition:transform .2s;
+}
+.vid-thumb:hover .play-circle{transform:scale(1.1);}
+.vid-thumb .play-circle::after{
+  content:'▶';font-size:1.4rem;color:var(--g1);margin-left:4px;
+}
+.vid-thumb .vid-label{
+  position:absolute;bottom:10px;left:12px;right:12px;
+  font-size:.7rem;color:rgba(255,255,255,.9);
+  background:rgba(0,0,0,.45);padding:4px 8px;border-radius:6px;
+  z-index:2;text-align:center;
+}
+/* IMAGE PLACEHOLDER inside video thumb */
+.vid-thumb .img-placeholder{
+  position:absolute;inset:0;border-radius:0;border:none;min-height:unset;
+  background:linear-gradient(135deg,#0d2e1a 0%,#1b6b3a 60%,#2e9c57 100%);
+  z-index:1;
+}
+.vid-thumb .img-placeholder .ph-icon{font-size:1.5rem;color:rgba(255,255,255,.7);}
+.vid-thumb .img-placeholder .ph-title{color:rgba(255,255,255,.8);font-size:.7rem;}
+.vid-thumb .img-placeholder .ph-hint{color:rgba(255,255,255,.55);}
+.vid-body{padding:14px;}
+.vid-person{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.vid-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.vid-person-info h4{font-size:.88rem;font-weight:700;}
+.vid-person-info span{font-size:.7rem;color:var(--gray);}
+.vid-stars{color:#f39c12;font-size:.82rem;margin-bottom:7px;}
+.vid-quote{font-size:.82rem;color:#444;line-height:1.65;font-style:italic;}
+.vid-verified{font-size:.65rem;background:var(--g4);color:var(--g1);padding:2px 8px;border-radius:8px;display:inline-block;margin-top:8px;}
+/* Dots */
+.vid-dots{display:flex;gap:6px;justify-content:center;margin-top:14px;}
+.vdot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .2s,transform .2s;}
+.vdot.active{background:#ffe066;transform:scale(1.3);}
+/* Scroll hint */
+.scroll-hint{text-align:center;color:rgba(255,255,255,.6);font-size:.72rem;margin-top:8px;padding:0 16px;}
+
+/* ============================================================
+   WRITTEN REVIEWS
+============================================================ */
+#s-reviews{background:var(--g4);}
+.rev-slider{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}
+.rev-slider::-webkit-scrollbar{height:3px;}
+.rev-slider::-webkit-scrollbar-thumb{background:var(--g2);border-radius:2px;}
+.rev-card{min-width:260px;flex-shrink:0;scroll-snap-align:start;background:#fff;border-radius:12px;padding:16px;box-shadow:0 3px 12px rgba(0,0,0,.08);border-top:3px solid var(--g2);}
+.rev-card .rav{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--g1),var(--g3));color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+.rev-card .rname{font-size:.88rem;font-weight:700;}
+.rev-card .rloc{font-size:.72rem;color:var(--gray);margin-bottom:6px;}
+.rev-card .rstars{color:#f39c12;font-size:.85rem;margin-bottom:8px;}
+.rev-card .rtext{font-size:.82rem;color:#444;line-height:1.65;font-style:italic;}
+.rev-card .rverify{font-size:.65rem;background:var(--g4);color:var(--g1);padding:2px 8px;border-radius:8px;display:inline-block;margin-top:8px;}
+
+/* ============================================================
+   NEW 10 SECTIONS
+============================================================ */
+
+/* 1. SUCCESS COUNTER */
+#s-counter{background:var(--g1);padding:32px 16px;text-align:center;}
+.counter-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:400px;margin:20px auto 0;}
+.counter-box{background:rgba(255,255,255,.1);border-radius:12px;padding:16px 10px;text-align:center;border:1px solid rgba(255,255,255,.15);}
+.counter-box .cnum{font-family:'Baloo 2',cursive;font-size:2rem;font-weight:800;color:#ffe066;}
+.counter-box .clabel{font-size:.72rem;color:rgba(255,255,255,.8);margin-top:4px;}
+
+/* 2. DIET CHART SECTION */
+#s-diet{background:#fff;}
+.diet-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.diet-card{border-radius:10px;padding:14px 12px;}
+.diet-card.avoid{background:#fff0f0;border:1px solid #ffd5d5;}
+.diet-card.eat{background:#e8f5ee;border:1px solid #b7e4c7;}
+.diet-card h4{font-size:.85rem;font-weight:700;margin-bottom:8px;}
+.diet-card.avoid h4{color:var(--red);}
+.diet-card.eat h4{color:var(--g1);}
+.diet-card ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.diet-card ul li{font-size:.78rem;color:var(--dark);display:flex;align-items:center;gap:5px;}
+
+/* 3. ULTRASOUND REPORT SECTION */
+#s-report{background:var(--g4);}
+.report-box{background:#fff;border-radius:12px;padding:18px 16px;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.report-box h4{font-size:.95rem;font-weight:700;color:var(--g1);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.report-steps{display:flex;flex-direction:column;gap:10px;}
+.rp-step{display:flex;gap:12px;align-items:flex-start;}
+.rp-num{width:28px;height:28px;border-radius:50%;background:var(--g1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;}
+.rp-step p{font-size:.85rem;color:var(--dark);line-height:1.5;padding-top:4px;}
+.rp-step strong{color:var(--g1);}
+
+/* 4. BEFORE/AFTER ULTRASOUND */
+#s-ba{background:var(--lgray);}
+
+/* 5. PAIN RELIEF TIMELINE */
+#s-timeline{background:#fff;}
+.timeline-track{position:relative;padding-left:44px;margin-top:16px;}
+.timeline-track::before{content:'';position:absolute;left:16px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,var(--g1),var(--g3));}
+.tl-item{position:relative;margin-bottom:16px;}
+.tl-dot{position:absolute;left:-44px;top:4px;width:30px;height:30px;border-radius:50%;background:var(--g2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.tl-box{background:var(--g4);border-radius:10px;padding:12px 14px;border-left:3px solid var(--g2);}
+.tl-box .tl-day{font-size:.72rem;font-weight:700;color:var(--g2);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+.tl-box h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:3px;}
+.tl-box p{font-size:.78rem;color:var(--gray);line-height:1.5;}
+
+/* 6. PATIENT STORIES GALLERY */
+#s-gallery{background:var(--lgray);}
+.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.gallery-item{border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.1);}
+.gallery-item-wide{grid-column:span 2;}
+.gallery-caption{background:var(--g1);color:#fff;padding:8px 12px;font-size:.75rem;font-weight:600;}
+
+/* 7. SHIPPING INFO */
+#s-ship{background:var(--g1);padding:36px 16px;}
+.ship-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.ship-card{background:rgba(255,255,255,.1);border-radius:10px;padding:14px 12px;text-align:center;border:1px solid rgba(255,255,255,.15);}
+.ship-card .ship-icon{font-size:1.8rem;margin-bottom:6px;}
+.ship-card h4{font-size:.82rem;font-weight:700;color:#ffe066;margin-bottom:4px;}
+.ship-card p{font-size:.72rem;color:rgba(255,255,255,.8);line-height:1.5;}
+
+/* 8. MEDIA & NEWS */
+#s-media{background:#fff;}
+.media-row{display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;margin-top:16px;scroll-snap-type:x mandatory;}
+.media-card{min-width:200px;flex-shrink:0;scroll-snap-align:start;border-radius:10px;overflow:hidden;border:1px solid #e8e8e8;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.media-body{padding:12px;}
+.media-body h4{font-size:.82rem;font-weight:700;color:var(--dark);margin-bottom:4px;line-height:1.3;}
+.media-body p{font-size:.72rem;color:var(--gray);line-height:1.5;}
+
+/* 9. REFERRAL / SHARE */
+#s-refer{background:var(--g4);}
+.refer-box{background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:14px;padding:22px 18px;text-align:center;color:#fff;}
+.refer-box h3{font-family:'Baloo 2',cursive;font-size:1.2rem;color:#ffe066;margin-bottom:8px;}
+.refer-box p{font-size:.85rem;opacity:.9;line-height:1.6;margin-bottom:16px;}
+.share-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.share-btn{padding:10px 16px;border-radius:20px;font-size:.8rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:6px;}
+.share-wa{background:#25D366;color:#fff;}
+.share-fb{background:#1877f2;color:#fff;}
+.share-copy{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);}
+
+/* 10. ORDER FORM */
+#s-form{background:#fff;}
+.form-wrap{background:linear-gradient(135deg,var(--g4),#fff);border-radius:16px;padding:24px 18px;border:2px solid var(--g3);max-width:480px;margin:0 auto;box-shadow:0 8px 32px rgba(46,156,87,.1);}
+.form-wrap h3{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;color:var(--g1);margin-bottom:4px;}
+.form-wrap .form-sub{font-size:.8rem;color:var(--gray);margin-bottom:20px;}
+.form-group{margin-bottom:14px;}
+.form-group label{display:block;font-size:.82rem;font-weight:700;color:var(--dark);margin-bottom:5px;}
+.form-group label span{color:var(--red);}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;padding:11px 14px;
+  border:1.5px solid #c3e6cb;border-radius:8px;
+  font-family:'Hind',sans-serif;font-size:.9rem;outline:none;
+  background:#fff;transition:border-color .2s,box-shadow .2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:var(--g2);box-shadow:0 0 0 3px rgba(46,156,87,.12);}
+.form-group textarea{height:80px;resize:vertical;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-note{font-size:.72rem;color:var(--gray);margin-top:4px;display:flex;align-items:center;gap:4px;}
+.form-submit{
+  width:100%;padding:15px;border:none;border-radius:10px;cursor:pointer;
+  background:linear-gradient(180deg,#2ecc71,#27ae60,#1e8449);
+  color:#fff;font-size:1rem;font-weight:700;font-family:'Hind',sans-serif;
+  box-shadow:0 6px 0 #0d4a25,0 8px 16px rgba(0,0,0,.2);
+  transition:all .12s;margin-top:6px;
+}
+.form-submit:hover{transform:translateY(2px);box-shadow:0 4px 0 #0d4a25,0 5px 10px rgba(0,0,0,.18);}
+.form-guarantee{display:flex;align-items:center;gap:8px;background:var(--g4);border-radius:8px;padding:10px 12px;margin-top:12px;}
+.form-guarantee .icon{font-size:1.2rem;}
+.form-guarantee p{font-size:.75rem;color:var(--g1);font-weight:600;line-height:1.4;}
+/* Success message */
+.form-success{display:none;background:var(--g2);color:#fff;border-radius:10px;padding:20px;text-align:center;margin-top:12px;}
+.form-success h4{font-family:'Baloo 2',cursive;font-size:1.1rem;margin-bottom:6px;}
+.form-success p{font-size:.85rem;opacity:.9;}
+
+/* ============================================================
+   FAQ
+============================================================ */
+#s-faq{background:var(--lgray);}
+.faq-item{border-bottom:1px solid #d4edda;}
+.faq-q{padding:14px 0;font-size:.9rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;transition:color .2s;}
+.faq-q:hover{color:var(--g1);}
+.faq-tog{width:26px;height:26px;border-radius:50%;flex-shrink:0;background:var(--g1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:transform .25s;}
+.faq-q.open .faq-tog{transform:rotate(45deg);background:var(--red);}
+.faq-a{font-size:.83rem;color:var(--gray);line-height:1.7;padding-bottom:14px;display:none;}
+.faq-a.show{display:block;}
+
+/* ============================================================
+   CTA
+============================================================ */
+#s-cta{background:linear-gradient(135deg,var(--g1),#0d4a25);padding:40px 16px;text-align:center;color:#fff;}
+#s-cta h2{font-family:'Baloo 2',cursive;font-size:1.8rem;color:#ffe066;margin-bottom:10px;}
+#s-cta p{font-size:.9rem;opacity:.88;line-height:1.7;margin-bottom:24px;max-width:340px;margin-left:auto;margin-right:auto;}
+.wa-btn{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:14px 24px;border-radius:12px;font-size:.92rem;font-weight:700;margin-bottom:10px;width:100%;max-width:340px;justify-content:center;box-shadow:0 6px 0 #1a9e4b,0 8px 16px rgba(0,0,0,.2);transition:all .12s;text-decoration:none;}
+.wa-btn:hover{transform:translateY(3px);box-shadow:0 3px 0 #1a9e4b,0 4px 8px rgba(0,0,0,.15);}
+.call-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--g1);padding:13px 24px;border-radius:12px;font-size:.92rem;font-weight:700;width:100%;max-width:340px;justify-content:center;box-shadow:0 4px 0 #bbb,0 6px 14px rgba(0,0,0,.15);transition:all .12s;text-decoration:none;}
+.cta-features{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+.cta-feat{font-size:.72rem;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:4px;}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer{background:#0a2e17;color:#777;padding:28px 16px 20px;text-align:center;}
+.fname{font-family:'Baloo 2',cursive;font-size:1.3rem;color:#fff;margin-bottom:8px;}
+.footer-links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:12px;}
+.footer-links a{font-size:.75rem;color:var(--g3);}
+footer p{font-size:.75rem;line-height:1.8;}
+
+/* ============================================================
+   FADE IN
+============================================================ */
+.fi{opacity:0;transform:translateY(20px);transition:opacity .55s,transform .55s;}
+.fi.on{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+  STICKY TOP NAV
+============================================================ -->
+<nav class="topnav">
+  <div class="brand-name">RN Herbal<small>प्राकृतिक · आयुर्वेदिक · विश्वसनीय</small></div>
+  <ul class="nav-links-row">
+    <li><a href="#s-product">Product</a></li>
+    <li><a href="#s-price">Price</a></li>
+    <li><a href="#s-form">Order</a></li>
+    <li><a href="#s-faq">FAQ</a></li>
+  </ul>
+  <a href="#s-form" class="nav-order-btn">Order Now 🛒</a>
+</nav>
+
+<!-- ============================================================
+  HERO
+============================================================ -->
+<section id="hero">
+  <div class="hero-tag">🌿 100% Ayurvedic · No Surgery</div>
+  <div class="hero-brand">Stone-Go <span>Capsule</span></div>
+  <p class="hero-sub-title">प्राकृतिक रूप से पथरी का समाधान</p>
+
+  <div class="hero-question-box fi">
+    <!-- IMAGE SUGGESTION: यहाँ पेट दर्द वाला व्यक्ति + kidney/gallbladder diagram की इमेज लगाएं -->
+    <!-- REPLACE src="" with your image path -->
+    <div class="img-placeholder img-ph-hero">
+      <span class="ph-size">Hero Image</span>
+      <div class="ph-icon">🖼️</div>
+      <div class="ph-title">Kidney/Gallbladder Pain Image</div>
+      <div class="ph-hint">Suggested: पेट दर्द वाला व्यक्ति + Kidney & Gallbladder diagram<br>Size: 380×140px</div>
+    </div>
+    <div class="hero-q-text">
+      क्या आपका भी <span>पित्ताशय की पथरी</span> का दर्द इतना बढ़ गया है
+      कि <span>ऑपरेशन करवाना मजबूरी</span> बनता जा रहा है?
+    </div>
+    <div class="hero-warning">
+      <p>⚠️ अगर <strong>Ultrasound Report</strong> में Stone आ चुका है<br>
+      और <strong>Doctor ने Surgery Suggest</strong> कर दी है —<br>
+      तो नीचे पढ़ें इसका <strong style="color:var(--g1);">प्राकृतिक समाधान</strong></p>
+    </div>
+  </div>
+
+  <div class="trust-row">
+    <span class="trust-pill">📊 Free Diet Chart</span>
+    <span class="trust-pill">🚚 Free Fast Delivery</span>
+    <span class="trust-pill">💰 Free COD</span>
+  </div>
+
+  <div class="hero-product-wrap fi">
+    <div class="prod-mini">
+      <!-- IMAGE SUGGESTION: Stone-Go Capsule bottle product image -->
+      <div class="img-placeholder" style="height:80px;min-height:80px;margin-bottom:8px;">
+        <div class="ph-icon">💊</div>
+        <div class="ph-title" style="font-size:.6rem;">Stone-Go Bottle</div>
+      </div>
+      <h4>Stone-Go</h4>
+      <p>किडनी व पित्त पथरी</p>
+      <span class="ptag">30/60 Capsules</span>
+    </div>
+    <div class="prod-mini">
+      <!-- IMAGE SUGGESTION: Stone Crash Powder sachet/jar image -->
+      <div class="img-placeholder" style="height:80px;min-height:80px;margin-bottom:8px;">
+        <div class="ph-icon">🌿</div>
+        <div class="ph-title" style="font-size:.6rem;">Stone Crash Powder</div>
+      </div>
+      <h4>Stone Crash</h4>
+      <p>पथरी तोड़े, flush करे</p>
+      <span class="ptag">100gm Powder</span>
+    </div>
+  </div>
+  <a href="#s-form" class="btn-3d-green" style="max-width:340px;display:block;margin:0 auto;">🛒 अभी ऑर्डर करें — ₹3,999 में</a>
+</section>
+
+<!-- ============================================================
+  SUCCESS COUNTER  [NEW SECTION 1]
+============================================================ -->
+<section id="s-counter" class="fi">
+  <p class="sec-title" style="color:#ffe066;">हमारी <span style="color:#fff;">सफलता</span> की कहानी</p>
+  <div class="gd" style="background:#ffe066;"></div>
+  <div class="counter-grid">
+    <div class="counter-box"><div class="cnum" id="c1">0</div><div class="clabel">खुश ग्राहक</div></div>
+    <div class="counter-box"><div class="cnum" id="c2">0%</div><div class="clabel">सफलता दर</div></div>
+    <div class="counter-box"><div class="cnum" id="c3">0+</div><div class="clabel">राज्यों में डिलीवरी</div></div>
+    <div class="counter-box"><div class="cnum" id="c4">0</div><div class="clabel">साल का अनुभव</div></div>
+  </div>
+</section>
+
+<!-- ============================================================
+  TRUST BADGES
+============================================================ -->
+<section id="s-trust1" class="sec fi">
+  <div class="trust3-row">
+    <div class="t3badge"><span class="icon">🌿</span><p>100% Natural</p></div>
+    <div class="t3badge"><span class="icon">🔬</span><p>Clinically Tested</p></div>
+    <div class="t3badge"><span class="icon">✅</span><p>No Side Effects</p></div>
+    <div class="t3badge"><span class="icon">🛡️</span><p>Safe (सुरक्षित)</p></div>
+    <div class="t3badge"><span class="icon">👨‍⚕️</span><p>Doctor-Guided</p></div>
+  </div>
+  <div class="trust-big-banner">
+    <span class="icon">👥</span>
+    <p>1 लाख + लोगों ने किया भरोसा ✅</p>
+  </div>
+</section>
+
+<!-- ============================================================
+  SYMPTOMS
+============================================================ -->
+<section id="s-symptoms" class="sec fi">
+  <div class="symptom-header">
+    <p>👉 ये लक्षण हल्के नहीं हैं —<br>ये confirmed <span>Gall Bladder Stone</span> के संकेत हैं:</p>
+  </div>
+
+  <!-- SYMPTOM CARDS — Replace img-ph-sm divs with real <img> tags -->
+  <div class="symptom-card red-bg fi">
+    <!-- IMAGE: पेट के दाईं तरफ दर्द वाली इमेज (अबडोमन पर हाथ) -->
+    <div class="img-placeholder img-ph-sm"><div class="ph-icon">🤕</div><div class="ph-title">Abdomen Pain</div></div>
+    <div class="sc-right">
+      <h4>✗ पेट के दाईं तरफ sharp pain</h4>
+      <p>Sharp pain on the right side of abdomen — पित्त की थैली का सबसे आम संकेत।</p>
+    </div>
+  </div>
+
+  <div class="symptom-card pink-bg fi">
+    <!-- IMAGE: पीठ और कंधे पर दर्द — लाल highlight वाली इमेज -->
+    <div class="img-placeholder img-ph-sm"><div class="ph-icon">🔴</div><div class="ph-title">Back Pain</div></div>
+    <div class="sc-right">
+      <h4>✗ पीठ और कंधे तक दर्द</h4>
+      <p>🔥 Pain radiating to back and shoulder — दर्द ऊपर तक फैलता है।</p>
+    </div>
+  </div>
+
+  <div class="symptom-card yellow-bg fi">
+    <!-- IMAGE: उल्टी करती हुई महिला की इमेज (पीला कपड़ा) -->
+    <div class="img-placeholder img-ph-sm"><div class="ph-icon">🤢</div><div class="ph-title">Vomiting</div></div>
+    <div class="sc-right">
+      <h4>✗ उल्टी, गैस, heaviness</h4>
+      <p>😟 Vomiting, gas & heaviness — खाना खाने के बाद भारीपन।</p>
+    </div>
+  </div>
+
+  <div class="symptom-card red-bg fi">
+    <!-- IMAGE: फास्ट फूड/फैटी खाना + पेट दर्द -->
+    <div class="img-placeholder img-ph-sm"><div class="ph-icon">🍔</div><div class="ph-title">Fatty Food</div></div>
+    <div class="sc-right">
+      <h4>✗ फैटी खाने के बाद attack</h4>
+      <p>🍔 Attack after eating fatty foods — तला-भुना खाने से दर्द।</p>
+    </div>
+  </div>
+
+  <div class="symptom-card pink-bg fi">
+    <!-- IMAGE: ऑपरेशन थिएटर / सर्जरी की इमेज -->
+    <div class="img-placeholder img-ph-sm"><div class="ph-icon">😨</div><div class="ph-title">Surgery Fear</div></div>
+    <div class="sc-right">
+      <h4>✗ हर बार surgery का डर</h4>
+      <p>😨 Constant fear of surgery — डॉक्टर बार-बार ऑपरेशन की सलाह।</p>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:12px;padding:16px;text-align:center;margin-top:16px;" class="fi">
+    <p style="color:#ffe066;font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;margin-bottom:6px;">👇 नीचे जानिए इन समस्या का समाधान</p>
+    <p style="color:rgba(255,255,255,.9);font-size:.88rem;font-weight:700;">Stone-Go Capsule — प्राकृतिक रूप से पथरी का समाधान</p>
+  </div>
+</section>
+
+<!-- ============================================================
+  PRODUCT INTRO
+============================================================ -->
+<section id="s-product" class="fi">
+  <div class="prod-name-big">Stone-Go Capsule</div>
+  <p class="prod-tagline">प्राकृतिक रूप से पथरी का समाधान</p>
+
+  <div class="prod-bottle fi">
+    <!-- IMAGE SUGGESTION: Stone-Go product bottle की high-quality इमेज (white background) -->
+    <div class="img-placeholder img-ph-md" style="max-width:200px;margin:0 auto 12px;min-height:160px;">
+      <span class="ph-size">Product Image</span>
+      <div class="ph-icon">💊</div>
+      <div class="ph-title">Stone-Go Capsule Bottle</div>
+      <div class="ph-hint">Suggested: White background product photo<br>Size: 200×160px</div>
+    </div>
+    <h3>Stone-Go Capsule</h3>
+    <p style="font-size:.75rem;color:var(--gray);margin-bottom:6px;">✅ Reduce pain · 100% Natural</p>
+    <span class="caps">GMP · 30 Capsules</span>
+  </div>
+
+  <div class="no-surg-badge fi">🚫 बिना दर्द, बिना सर्जरी</div>
+  <div class="cert-badges fi">
+    <span class="cert-b">🌿 100% Natural</span>
+    <span class="cert-b">🔬 Clinically Tested</span>
+    <span class="cert-b">✅ No Side Effects</span>
+  </div>
+  <div class="prod-checks fi">
+    <p style="color:#ffe066;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;margin-bottom:10px;">एक 100% Ayurvedic solution जो:</p>
+    <div class="prod-check-item"><span class="ck">✓</span><p>पथरी को <strong>जड़ से तोड़ने</strong> में मदद करता है</p></div>
+    <div class="prod-check-item"><span class="ck">✓</span><p>पथरी को <strong>घोलने</strong> में सहायक</p></div>
+    <div class="prod-check-item"><span class="ck">✓</span><p>पथरी को <strong>बाहर निकालने</strong> में प्रभावी</p></div>
+  </div>
+</section>
+
+<!-- ============================================================
+  4-STEP MECHANISM
+============================================================ -->
+<section id="s-steps" class="sec fi">
+  <p class="sec-title">Stone-Go Capsule <span>4-step</span> में काम करती है</p>
+  <div class="gd"></div>
+
+  <div class="step4-card fi">
+    <!-- IMAGE: Gallbladder में stone टूटते हुए diagram -->
+    <div class="img-placeholder img-ph-step"><div class="ph-icon">💥</div><div class="ph-title">Stone Break</div></div>
+    <div class="sc-right">
+      <h4>💥 <span>Stone Break Action</span></h4>
+      <p>जमा मिनरल्स को ढीला करके पथरी को छोटे कणों में तोड़ता है।</p>
+      <em>Breaks stones into small particles</em>
+    </div>
+  </div>
+
+  <div class="step4-card fi">
+    <!-- IMAGE: Kidney से urine flush होते हुए diagram -->
+    <div class="img-placeholder img-ph-step"><div class="ph-icon">💧</div><div class="ph-title">Flush Out</div></div>
+    <div class="sc-right">
+      <h4>💧 <span>Flush Out Support</span></h4>
+      <p>टूटे हुए कणों को पेशाब के रास्ते बाहर निकालने में मदद।</p>
+      <em>Flushes out broken particles through urine</em>
+    </div>
+  </div>
+
+  <div class="step4-card fi">
+    <!-- IMAGE: पेट में सूजन कम होती हुई इमेज -->
+    <div class="img-placeholder img-ph-step"><div class="ph-icon">🌿</div><div class="ph-title">Anti-Inflam</div></div>
+    <div class="sc-right">
+      <h4>🌿 <span>Anti-Inflammation</span></h4>
+      <p>सूजन, जलन और दर्द को शांत करता है।</p>
+      <em>Soothes inflammation, burning & pain</em>
+    </div>
+  </div>
+
+  <div class="step4-card fi">
+    <!-- IMAGE: स्वस्थ kidney की इमेज / prevention icon -->
+    <div class="img-placeholder img-ph-step"><div class="ph-icon">🛡️</div><div class="ph-title">Prevention</div></div>
+    <div class="sc-right">
+      <h4>🛡️ <span>Recurrence Control</span></h4>
+      <p>दोबारा पथरी बनने की संभावना कम करता है।</p>
+      <em>Prevents stone recurrence</em>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  PAIN RELIEF TIMELINE  [NEW SECTION 2]
+============================================================ -->
+<section id="s-timeline" class="sec fi">
+  <p class="sec-title">दर्द से राहत का <span>सफर</span></p>
+  <p class="sec-sub">Stone-Go लेने के बाद आपका शरीर कैसे ठीक होता है</p>
+  <div class="gd"></div>
+  <div class="timeline-track">
+    <div class="tl-item fi">
+      <div class="tl-dot">W1</div>
+      <div class="tl-box">
+        <div class="tl-day">पहला हफ्ता</div>
+        <h4>💊 शुरुआत — दवाई काम शुरू करती है</h4>
+        <p>पथरी धीरे-धीरे ढीली होने लगती है। पेशाब सामान्य होने लगता है।</p>
+      </div>
+    </div>
+    <div class="tl-item fi">
+      <div class="tl-dot">W2</div>
+      <div class="tl-box">
+        <div class="tl-day">दूसरा-तीसरा हफ्ता</div>
+        <h4>😌 दर्द में कमी शुरू</h4>
+        <p>सूजन और जलन कम होती है। रात को नींद बेहतर होती है।</p>
+      </div>
+    </div>
+    <div class="tl-item fi">
+      <div class="tl-dot">M1</div>
+      <div class="tl-box">
+        <div class="tl-day">पहला महीना</div>
+        <h4>✅ महत्वपूर्ण सुधार</h4>
+        <p>पथरी के टुकड़े flush होने लगते हैं। पेट का भारीपन खत्म।</p>
+      </div>
+    </div>
+    <div class="tl-item fi">
+      <div class="tl-dot">M2</div>
+      <div class="tl-box">
+        <div class="tl-day">45-60 दिन</div>
+        <h4>🎉 Ultrasound में सुधार</h4>
+        <p>ज्यादातर मामलों में अल्ट्रासाउंड रिपोर्ट में पथरी का आकार कम या गायब।</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  WHY STONE CARE
+============================================================ -->
+<section id="s-why" class="sec fi">
+  <p class="sec-title">Why Stone Care is <span>Recommended?</span></p>
+  <p class="sec-sub">आयुर्वेद के सिद्धांत पर आधारित</p>
+  <div class="gd"></div>
+
+  <div class="cause-box fi">
+    <h4>🐾 पथरी का मुख्य कारण</h4>
+    <p style="font-size:.78rem;color:var(--gray);margin-bottom:10px;">Ayurveda के अनुसार पथरी का मुख्य कारण:</p>
+    <div class="cause-item heat"><span class="ci">🔥</span><p>शरीर में गर्मी (Heat)<small>Internal heat accumulation</small></p></div>
+    <div class="cause-item dry"><span class="ci">🏜️</span><p>शरीर में सूखापन (Dryness)<small>Lack of hydration & fluids</small></p></div>
+    <div class="cause-item tox"><span class="ci">☠️</span><p>टॉक्सिन का जमाव (Toxins)<small>Accumulation of harmful toxins</small></p></div>
+  </div>
+  <div class="vs-divider"><div class="line"></div><div class="vs-circle">VS</div><div class="line r"></div></div>
+  <div class="ayur-box fi">
+    <h4>🌿 आयुर्वेद का समाधान</h4>
+    <div class="ayur-item"><div class="num">1</div><p><strong>Stone की जड़ पर काम</strong> — Root cause approach</p></div>
+    <div class="ayur-item"><div class="num">2</div><p><strong>Blood Flow सुधारे</strong> — Improves circulation</p></div>
+    <div class="ayur-item"><div class="num">3</div><p><strong>मूत्र मार्ग साफ करे</strong> — Cleanses urinary tract</p></div>
+  </div>
+  <div class="result-banner fi"><span class="icon">✅</span><p>Result = Long-term Relief — पूरी तरह प्राकृतिक और प्रभावी</p></div>
+  <div class="modern-diff fi">
+    <h4>💡 यही फर्क है Modern और Ayurveda में</h4>
+    <p>Modern treatment सिर्फ दर्द दबाता है, जबकि <strong>Stone Care Capsule</strong> समस्या की जड़ खत्म करके <strong>permanent solution</strong> देता है।</p>
+  </div>
+</section>
+
+<!-- ============================================================
+  HERBS
+============================================================ -->
+<section id="s-herbs" class="fi">
+  <p class="sec-title" style="color:#ffe066;text-align:center;">🌿 प्राकृतिक जड़ी बूटियाँ</p>
+  <p class="sec-sub" style="color:rgba(255,255,255,.8);text-align:center;">Key Ingredients — शक्तिशाली आयुर्वेदिक संयोजन</p>
+  <p style="text-align:center;color:#ffe066;font-size:.82rem;margin-bottom:16px;padding:0 16px;">✨ 100% Natural & Safe ✨</p>
+
+  <!-- Each herb card: replace img-placeholder with real herb photo -->
+  <div style="padding:0 16px;">
+  <div class="herb-card fi">
+    <div class="herb-left">
+      <!-- IMAGE: पुनर्नवा plant की असली इमेज (green leaves) -->
+      <div class="img-placeholder img-ph-herb"><div class="ph-icon">🌿</div><div class="ph-title">पुनर्नवा</div></div>
+      <div><h4>🌿 पुनर्नवा</h4><p>पथरी तोड़ने में सहायक</p></div>
+    </div><span class="herb-icon">🌱</span>
+  </div>
+  <div class="herb-card fi">
+    <div class="herb-left">
+      <!-- IMAGE: गोक्षुर / Gokshura plant की इमेज (पीले फूल) -->
+      <div class="img-placeholder img-ph-herb"><div class="ph-icon">🌼</div><div class="ph-title">गोक्षुर</div></div>
+      <div><h4>🌼 गोक्षुर</h4><p>मूत्र मार्ग साफ करे</p></div>
+    </div><span class="herb-icon">🌿</span>
+  </div>
+  <div class="herb-card fi">
+    <div class="herb-left">
+      <!-- IMAGE: वरुण / Varuna tree bark की इमेज -->
+      <div class="img-placeholder img-ph-herb"><div class="ph-icon">🌾</div><div class="ph-title">वरुण</div></div>
+      <div><h4>🌾 वरुण</h4><p>Stone flush करने में मदद</p></div>
+    </div><span class="herb-icon">🍀</span>
+  </div>
+  <div class="herb-card fi">
+    <div class="herb-left">
+      <!-- IMAGE: कुलथी दाल की इमेज (लाल-भूरे बीज) -->
+      <div class="img-placeholder img-ph-herb"><div class="ph-icon">🌰</div><div class="ph-title">कुलथी</div></div>
+      <div><h4>🌰 कुलथी</h4><p>मिनरल जमा होने से रोके</p></div>
+    </div><span class="herb-icon">🌻</span>
+  </div>
+  <div class="herb-card fi">
+    <div class="herb-left">
+      <!-- IMAGE: पाषाणभेद plant की इमेज (succulent/stone plant) -->
+      <div class="img-placeholder img-ph-herb"><div class="ph-icon">💎</div><div class="ph-title">पाषाणभेद</div></div>
+      <div><h4>💎 पाषाणभेद</h4><p>पथरी घोलने में उपयोगी</p></div>
+    </div><span class="herb-icon">🪨</span>
+  </div>
+  <div class="herb-card fi">
+    <div class="herb-left">
+      <!-- IMAGE: शिलाजीत की black resin इमेज -->
+      <div class="img-placeholder img-ph-herb"><div class="ph-icon">⚫</div><div class="ph-title">शिलाजीत</div></div>
+      <div><h4>⚫ शिलाजीत</h4><p>किडनी को मजबूत करे</p></div>
+    </div><span class="herb-icon">🏔️</span>
+  </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  VS COMPARISON
+============================================================ -->
+<section id="s-vs" class="sec fi">
+  <p class="sec-title">Modern Treatment <span>VS</span> RN Herbal</p>
+  <div class="gd"></div>
+  <div class="vs-grid">
+    <div class="vs-card bad fi">
+      <!-- IMAGE: Painkiller tablets / दर्द निवारक दवाई की इमेज -->
+      <div class="img-placeholder img-ph-vs"><div class="ph-icon">💊</div><div class="ph-title">Modern — Painkiller</div></div>
+      <div class="label">Modern Treatment</div><h4>⚠️ Painkiller-dependent</h4>
+    </div>
+    <div class="vs-card good fi">
+      <!-- IMAGE: पेड़ की जड़ / root cause approach illustration -->
+      <div class="img-placeholder img-ph-vs" style="background:linear-gradient(135deg,#e8f5ee,#c8e6c9);border-color:#b7e4c7;"><div class="ph-icon">🌳</div><div class="ph-title">RN Herbal — Root Cause</div></div>
+      <div class="label">Stone-Go Capsule</div><h4>✅ Root-cause approach</h4>
+    </div>
+    <div class="vs-card bad fi">
+      <!-- IMAGE: ऑपरेशन थिएटर / surgery की इमेज -->
+      <div class="img-placeholder img-ph-vs"><div class="ph-icon">🏥</div><div class="ph-title">Surgery Fear</div></div>
+      <div class="label">Modern Treatment</div><h4>😨 Surgery / Laser fear</h4>
+    </div>
+    <div class="vs-card good fi">
+      <!-- IMAGE: No surgery icon / crossed-out syringe -->
+      <div class="img-placeholder img-ph-vs" style="background:linear-gradient(135deg,#e8f5ee,#c8e6c9);border-color:#b7e4c7;"><div class="ph-icon">🚫</div><div class="ph-title">No Surgery</div></div>
+      <div class="label">Stone-Go Capsule</div><h4>😊 No surgery needed</h4>
+    </div>
+    <div class="vs-card bad fi">
+      <!-- IMAGE: दर्द वापस आता हुआ person -->
+      <div class="img-placeholder img-ph-vs"><div class="ph-icon">⏱️</div><div class="ph-title">Temporary Relief</div></div>
+      <div class="label">Modern Treatment</div><h4>⏱️ Temporary relief</h4>
+    </div>
+    <div class="vs-card good fi">
+      <!-- IMAGE: Happy healthy person / long-term wellness -->
+      <div class="img-placeholder img-ph-vs" style="background:linear-gradient(135deg,#e8f5ee,#c8e6c9);border-color:#b7e4c7;"><div class="ph-icon">🎯</div><div class="ph-title">Long-term Support</div></div>
+      <div class="label">Stone-Go Capsule</div><h4>🎯 Long-term support</h4>
+    </div>
+    <div class="vs-card bad fi">
+      <!-- IMAGE: Side effects warning / chemical tablets -->
+      <div class="img-placeholder img-ph-vs"><div class="ph-icon">⚠️</div><div class="ph-title">Side Effects</div></div>
+      <div class="label">Modern Treatment</div><h4>⚡ Side-effects risk</h4>
+    </div>
+    <div class="vs-card good fi">
+      <!-- IMAGE: आयुर्वेदिक herbs mortar-pestle / natural ingredients -->
+      <div class="img-placeholder img-ph-vs" style="background:linear-gradient(135deg,#e8f5ee,#c8e6c9);border-color:#b7e4c7;"><div class="ph-icon">🌿</div><div class="ph-title">Ayurvedic Natural</div></div>
+      <div class="label">Stone-Go Capsule</div><h4>🌿 100% Ayurvedic</h4>
+    </div>
+  </div>
+  <div class="winner-banner fi">
+    <span class="icon">🏆</span>
+    <div><h4>Clear Winner!</h4><p>Stone-Go Capsule — प्राकृतिक और सुरक्षित</p></div>
+  </div>
+</section>
+
+<!-- ============================================================
+  BEFORE / AFTER  [NEW SECTION 3]
+============================================================ -->
+<section id="s-ba" class="sec fi">
+  <p class="sec-title">उपयोग से पहले और <span>बाद में</span></p>
+  <p class="sec-sub">असली ग्राहकों के Ultrasound results</p>
+  <div class="gd"></div>
+  <div class="ba-wrap">
+    <div class="ba-card fi">
+      <!-- IMAGE: Ultrasound report showing stone (BEFORE) -->
+      <div class="img-placeholder img-ph-ba">
+        <span class="ph-size">BEFORE Image</span>
+        <div class="ph-icon">🔴</div>
+        <div class="ph-title">Ultrasound — Stone दिख रहा है</div>
+        <div class="ph-hint">उपयोग से पहले की रिपोर्ट<br>Size: 160×200px</div>
+      </div>
+      <div class="ba-label before">❌ उपयोग से पहले
+        <ul><li>पथरी दिख रही है</li><li>तेज दर्द</li><li>जलन</li></ul>
+      </div>
+    </div>
+    <div class="ba-card fi">
+      <!-- IMAGE: Ultrasound report showing NO stone (AFTER) -->
+      <div class="img-placeholder img-ph-ba" style="background:linear-gradient(135deg,#e8f5ee,#c8e6c9);">
+        <span class="ph-size">AFTER Image</span>
+        <div class="ph-icon">✅</div>
+        <div class="ph-title">Ultrasound — Stone गायब!</div>
+        <div class="ph-hint">45-60 दिन बाद की रिपोर्ट<br>Size: 160×200px</div>
+      </div>
+      <div class="ba-label after">✅ 45-60 दिन बाद
+        <ul><li>पथरी गायब</li><li>दर्द से राहत</li><li>स्वस्थ</li></ul>
+      </div>
+    </div>
+  </div>
+  <!-- Full-width before-after patient photo -->
+  <div style="margin-top:16px;" class="fi">
+    <!-- IMAGE: एक ग्राहक की before-after collage photo (खुश चेहरा vs दर्द वाला चेहरा) -->
+    <div class="img-placeholder img-ph-lg">
+      <span class="ph-size">Before-After Patient Photo</span>
+      <div class="ph-icon">🙂</div>
+      <div class="ph-title">Patient Before vs After Collage</div>
+      <div class="ph-hint">Real customer transformation photo<br>Suggested: Side-by-side before (pain) and after (happy) — Size: Full width × 180px</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  HOW TO USE
+============================================================ -->
+<section id="s-howto" class="fi">
+  <p class="sec-title" style="color:#ffe066;text-align:center;padding:0 16px;">कैसे उपयोग करें</p>
+  <p class="sec-sub" style="text-align:center;padding:0 16px;">सिर्फ 4 आसान steps में पथरी से मुक्ति</p>
+  <div class="gd" style="background:#ffe066;"></div>
+  <div class="howto-timeline" style="padding:0 16px 0 66px;">
+    <div class="howto-step fi"><div class="num">1</div>
+      <div class="howto-card">
+        <h4>💊 दिन में 2 बार</h4>
+        <p>Morning & Evening: सुबह और शाम 1-1 कैप्सूल</p>
+        <span class="tip">⏰ Best Time: खाने के बाद</span>
+      </div>
+    </div>
+    <div class="howto-step fi"><div class="num">2</div>
+      <div class="howto-card">
+        <h4>💧 गुनगुने पानी के साथ</h4>
+        <p>Lukewarm Water: एक गिलास हल्का गर्म पानी</p>
+        <span class="tip">💡 Tip: ठंडा पानी avoid करें</span>
+      </div>
+    </div>
+    <div class="howto-step fi"><div class="num">3</div>
+      <div class="howto-card">
+        <h4>📅 30–45 दिन लगातार</h4>
+        <p>पूरा course complete करें। बीच में बंद न करें।</p>
+        <span class="tip">✅ Result: 2-4 हफ्ते में राहत शुरू</span>
+      </div>
+    </div>
+    <div class="howto-step fi"><div class="num">4</div>
+      <div class="howto-card">
+        <h4>🥗 परहेज जरूरी</h4>
+        <p>टमाटर, पालक, ज्यादा नमक, कोल्ड ड्रिंक से परहेज।</p>
+        <span class="tip">💧 रोज 3-4 लीटर पानी पिएं</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  DIET CHART  [NEW SECTION 4]
+============================================================ -->
+<section id="s-diet" class="sec fi">
+  <p class="sec-title">📊 Free <span>Diet Chart</span></p>
+  <p class="sec-sub">पथरी के मरीज़ों के लिए आहार योजना</p>
+  <div class="gd"></div>
+  <!-- IMAGE: Diet chart / food guide infographic -->
+  <div class="img-placeholder img-ph-md" style="margin-bottom:16px;">
+    <span class="ph-size">Diet Chart Image</span>
+    <div class="ph-icon">🥗</div>
+    <div class="ph-title">Diet Chart Infographic</div>
+    <div class="ph-hint">Suggested: Colorful food chart showing DO's & DON'Ts<br>Size: Full width × 160px</div>
+  </div>
+  <div class="diet-grid">
+    <div class="diet-card avoid fi">
+      <h4>❌ परहेज करें</h4>
+      <ul>
+        <li>🍅 टमाटर</li>
+        <li>🥬 पालक</li>
+        <li>🧂 ज्यादा नमक</li>
+        <li>🥤 कोल्ड ड्रिंक</li>
+        <li>🍟 तला-भुना</li>
+        <li>☕ चाय / कॉफी</li>
+      </ul>
+    </div>
+    <div class="diet-card eat fi">
+      <h4>✅ जरूर खाएं</h4>
+      <ul>
+        <li>💧 3-4L पानी</li>
+        <li>🍋 नींबू पानी</li>
+        <li>🥥 नारियल पानी</li>
+        <li>🥒 खीरा</li>
+        <li>🌾 दलिया</li>
+        <li>🍌 केला</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  PATIENT STORIES GALLERY  [NEW SECTION 5]
+============================================================ -->
+<section id="s-gallery" class="sec fi">
+  <p class="sec-title">असली <span>मरीज़ों की कहानियाँ</span></p>
+  <p class="sec-sub">उन्होंने ऑपरेशन से बचाव किया — आप भी बच सकते हैं</p>
+  <div class="gd"></div>
+  <div class="gallery-grid">
+    <div class="gallery-item gallery-item-wide fi">
+      <!-- IMAGE: Group photo / collage of happy healed patients holding product -->
+      <div class="img-placeholder img-ph-lg" style="border-radius:10px 10px 0 0;">
+        <span class="ph-size">Patient Group Photo</span>
+        <div class="ph-icon">👨‍👩‍👧‍👦</div>
+        <div class="ph-title">Happy Patients Group Photo</div>
+        <div class="ph-hint">Suggested: 4-5 recovered patients smiling with product<br>Size: Full width × 180px</div>
+      </div>
+      <div class="gallery-caption">🎉 5000+ ग्राहक पथरी से मुक्त</div>
+    </div>
+    <div class="gallery-item fi">
+      <!-- IMAGE: Ultrasound report before treatment — stone visible -->
+      <div class="img-placeholder img-ph-md" style="min-height:120px;border-radius:8px 8px 0 0;">
+        <div class="ph-icon">📋</div>
+        <div class="ph-title">Before Report</div>
+        <div class="ph-hint">Ultrasound before</div>
+      </div>
+      <div class="gallery-caption">Before Treatment</div>
+    </div>
+    <div class="gallery-item fi">
+      <!-- IMAGE: Ultrasound report after treatment — no stone -->
+      <div class="img-placeholder img-ph-md" style="min-height:120px;background:linear-gradient(135deg,#e8f5ee,#c8e6c9);border-radius:8px 8px 0 0;">
+        <div class="ph-icon">✅</div>
+        <div class="ph-title">After Report</div>
+        <div class="ph-hint">Ultrasound after</div>
+      </div>
+      <div class="gallery-caption" style="background:var(--g2);">After Treatment ✅</div>
+    </div>
+    <div class="gallery-item fi">
+      <!-- IMAGE: Customer holding product bottle and smiling (Nepal customer) -->
+      <div class="img-placeholder img-ph-md" style="min-height:120px;border-radius:8px 8px 0 0;">
+        <div class="ph-icon">😊</div>
+        <div class="ph-title">Happy Customer</div>
+        <div class="ph-hint">Nepal customer with product</div>
+      </div>
+      <div class="gallery-caption">राजेश, बीरगंज नेपाल</div>
+    </div>
+    <div class="gallery-item fi">
+      <!-- IMAGE: Another customer photo — woman smiling (Pokhara customer) -->
+      <div class="img-placeholder img-ph-md" style="min-height:120px;border-radius:8px 8px 0 0;">
+        <div class="ph-icon">🙋‍♀️</div>
+        <div class="ph-title">Happy Customer</div>
+        <div class="ph-hint">Nepal customer woman</div>
+      </div>
+      <div class="gallery-caption">प्रमिला, पोखरा नेपाल</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  VIDEO TESTIMONIALS  [NEW SECTION 6 — MOBILE OPTIMISED]
+============================================================ -->
+<section id="s-videos">
+  <p class="sec-title fi" style="padding:0 16px;">ग्राहकों की <span style="color:#fff;">Video</span> समीक्षाएँ</p>
+  <p class="sec-sub fi" style="padding:0 16px;">असली लोग, असली नतीजे — नेपाल से</p>
+  <div class="gd" style="background:#ffe066;margin:8px auto 20px;"></div>
+
+  <div class="vid-slider-wrap">
+    <div class="vid-slider" id="vidSlider">
+
+      <!-- VIDEO CARD 1 -->
+      <div class="vid-card">
+        <div class="vid-thumb" onclick="playVideo(this,'VID1')">
+          <!-- IMAGE SUGGESTION: Customer का face/thumbnail screenshot from video -->
+          <!-- Replace this placeholder with actual video thumbnail image -->
+          <div class="img-placeholder">
+            <div class="ph-icon">🎥</div>
+            <div class="ph-title">Video Thumbnail 1</div>
+            <div class="ph-hint">राजेश श्रेष्ठ का वीडियो thumbnail<br>Size: Full×190px</div>
+          </div>
+          <div class="play-circle"></div>
+          <div class="vid-label">▶ राजेश श्रेष्ठ — 18mm पथरी से मुक्ति</div>
+        </div>
+        <div class="vid-body">
+          <div class="vid-person">
+            <div class="vid-avatar">RS</div>
+            <div class="vid-person-info">
+              <h4>राजेश श्रेष्ठ</h4>
+              <span>📍 बीरगंज, नेपाल</span>
+            </div>
+          </div>
+          <div class="vid-stars">★★★★★</div>
+          <p class="vid-quote">"मेरी किडनी में 18mm की पथरी थी। 45 दिन में अल्ट्रासाउंड में पथरी पूरी तरह गायब। डॉक्टर भी हैरान थे!"</p>
+          <span class="vid-verified">✅ सत्यापित ग्राहक</span>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 2 -->
+      <div class="vid-card">
+        <div class="vid-thumb" onclick="playVideo(this,'VID2')">
+          <div class="img-placeholder">
+            <div class="ph-icon">🎥</div>
+            <div class="ph-title">Video Thumbnail 2</div>
+            <div class="ph-hint">प्रमिला महर्जन का thumbnail<br>Size: Full×190px</div>
+          </div>
+          <div class="play-circle"></div>
+          <div class="vid-label">▶ प्रमिला — Gallbladder Stone ठीक</div>
+        </div>
+        <div class="vid-body">
+          <div class="vid-person">
+            <div class="vid-avatar" style="background:linear-gradient(135deg,#c0392b,#e74c3c);">PM</div>
+            <div class="vid-person-info">
+              <h4>प्रमिला महर्जन</h4>
+              <span>📍 पोखरा, नेपाल</span>
+            </div>
+          </div>
+          <div class="vid-stars">★★★★★</div>
+          <p class="vid-quote">"गॉलब्लैडर में 10mm पथरी थी। 2 महीने का कोर्स — रिपोर्ट क्लियर। कोई ऑपरेशन नहीं करवाना पड़ा!"</p>
+          <span class="vid-verified">✅ सत्यापित ग्राहक</span>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 3 -->
+      <div class="vid-card">
+        <div class="vid-thumb" onclick="playVideo(this,'VID3')">
+          <div class="img-placeholder">
+            <div class="ph-icon">🎥</div>
+            <div class="ph-title">Video Thumbnail 3</div>
+            <div class="ph-hint">बिनोद थापा का thumbnail<br>Size: Full×190px</div>
+          </div>
+          <div class="play-circle"></div>
+          <div class="vid-label">▶ बिनोद — 50 दिन में पूरी राहत</div>
+        </div>
+        <div class="vid-body">
+          <div class="vid-person">
+            <div class="vid-avatar" style="background:linear-gradient(135deg,#1565c0,#1976d2);">BT</div>
+            <div class="vid-person-info">
+              <h4>बिनोद थापा</h4>
+              <span>📍 बीरगंज, नेपाल</span>
+            </div>
+          </div>
+          <div class="vid-stars">★★★★★</div>
+          <p class="vid-quote">"पेशाब में खून आ रहा था, असहनीय दर्द था। Stone-Go ने 50 दिन में पूरी तरह ठीक किया। 100% recommend!"</p>
+          <span class="vid-verified">✅ सत्यापित ग्राहक</span>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 4 -->
+      <div class="vid-card">
+        <div class="vid-thumb" onclick="playVideo(this,'VID4')">
+          <div class="img-placeholder">
+            <div class="ph-icon">🎥</div>
+            <div class="ph-title">Video Thumbnail 4</div>
+            <div class="ph-hint">सरस्वती कोइराला का thumbnail<br>Size: Full×190px</div>
+          </div>
+          <div class="play-circle"></div>
+          <div class="vid-label">▶ सरस्वती — UTI + Stone दोनों ठीक</div>
+        </div>
+        <div class="vid-body">
+          <div class="vid-person">
+            <div class="vid-avatar" style="background:linear-gradient(135deg,#7b1fa2,#9c27b0);">SK</div>
+            <div class="vid-person-info">
+              <h4>सरस्वती कोइराला</h4>
+              <span>📍 पोखरा, नेपाल</span>
+            </div>
+          </div>
+          <div class="vid-stars">★★★★★</div>
+          <p class="vid-quote">"UTI और पथरी दोनों एक साथ थी। Stone Crash Powder ने जलन और इंफेक्शन दोनों खत्म किए। बहुत शुक्रिया!"</p>
+          <span class="vid-verified">✅ सत्यापित ग्राहक</span>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 5 -->
+      <div class="vid-card">
+        <div class="vid-thumb" onclick="playVideo(this,'VID5')">
+          <div class="img-placeholder">
+            <div class="ph-icon">🎥</div>
+            <div class="ph-title">Video Thumbnail 5</div>
+            <div class="ph-hint">दिलीप पौडेल का thumbnail<br>Size: Full×190px</div>
+          </div>
+          <div class="play-circle"></div>
+          <div class="vid-label">▶ दिलीप — 12mm पथरी गायब</div>
+        </div>
+        <div class="vid-body">
+          <div class="vid-person">
+            <div class="vid-avatar" style="background:linear-gradient(135deg,#e65100,#f57c00);">DP</div>
+            <div class="vid-person-info">
+              <h4>दिलीप पौडेल</h4>
+              <span>📍 बीरगंज, नेपाल</span>
+            </div>
+          </div>
+          <div class="vid-stars">★★★★★</div>
+          <p class="vid-quote">"12mm पथरी — ऑपरेशन का डर था। RN Herbal का 60 दिन का कोर्स — अल्ट्रासाउंड में पथरी पूरी तरह गायब!"</p>
+          <span class="vid-verified">✅ सत्यापित ग्राहक</span>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 6 -->
+      <div class="vid-card">
+        <div class="vid-thumb" onclick="playVideo(this,'VID6')">
+          <div class="img-placeholder">
+            <div class="ph-icon">🎥</div>
+            <div class="ph-title">Video Thumbnail 6</div>
+            <div class="ph-hint">मीना गुरुङ का thumbnail<br>Size: Full×190px</div>
+          </div>
+          <div class="play-circle"></div>
+          <div class="vid-label">▶ मीना — 20mm पथरी 90 दिन में</div>
+        </div>
+        <div class="vid-body">
+          <div class="vid-person">
+            <div class="vid-avatar" style="background:linear-gradient(135deg,#00695c,#00897b);">MG</div>
+            <div class="vid-person-info">
+              <h4>मीना गुरुङ</h4>
+              <span>📍 पोखरा, नेपाल</span>
+            </div>
+          </div>
+          <div class="vid-stars">★★★★★</div>
+          <p class="vid-quote">"20mm की पथरी थी। सबने कहा ऑपरेशन के बिना नहीं होगा। 90 दिन में पूरी तरह ठीक। जादू से कम नहीं!"</p>
+          <span class="vid-verified">✅ सत्यापित ग्राहक</span>
+        </div>
+      </div>
+
+    </div><!-- end vid-slider -->
+  </div>
+
+  <div class="vid-dots" id="vidDots">
+    <div class="vdot active" onclick="scrollToVid(0)"></div>
+    <div class="vdot" onclick="scrollToVid(1)"></div>
+    <div class="vdot" onclick="scrollToVid(2)"></div>
+    <div class="vdot" onclick="scrollToVid(3)"></div>
+    <div class="vdot" onclick="scrollToVid(4)"></div>
+    <div class="vdot" onclick="scrollToVid(5)"></div>
+  </div>
+  <p class="scroll-hint">← बाएं-दाएं स्वाइप करें →</p>
+</section>
+
+<!-- ============================================================
+  WRITTEN REVIEWS
+============================================================ -->
+<section id="s-reviews" class="sec fi">
+  <p class="sec-title">ग्राहकों की <span>समीक्षाएँ</span></p>
+  <p class="sec-sub">नेपाल के बीरगंज और पोखरा से</p>
+  <div class="gd"></div>
+  <div class="rev-slider">
+    <div class="rev-card"><div class="rav">RS</div><div class="rname">राजेश श्रेष्ठ</div><div class="rloc">📍 बीरगंज, नेपाल</div><div class="rstars">★★★★★</div><p class="rtext">"18mm की पथरी थी। डॉक्टर ने ऑपरेशन बताया। 45 दिन में अल्ट्रासाउंड में पथरी गायब। चमत्कार!"</p><span class="rverify">✅ सत्यापित खरीदार</span></div>
+    <div class="rev-card"><div class="rav">PM</div><div class="rname">प्रमिला महर्जन</div><div class="rloc">📍 पोखरा, नेपाल</div><div class="rstars">★★★★★</div><p class="rtext">"गॉलब्लैडर में 10mm पथरी। 2 महीने का कोर्स — रिपोर्ट क्लियर। कोई ऑपरेशन नहीं!"</p><span class="rverify">✅ सत्यापित खरीदार</span></div>
+    <div class="rev-card"><div class="rav">BT</div><div class="rname">बिनोद थापा</div><div class="rloc">📍 बीरगंज, नेपाल</div><div class="rstars">★★★★★</div><p class="rtext">"पेशाब में खून और असहनीय दर्द था। 50 दिन में पूरी राहत। 100% recommend!"</p><span class="rverify">✅ सत्यापित खरीदार</span></div>
+    <div class="rev-card"><div class="rav">SK</div><div class="rname">सरस्वती कोइराला</div><div class="rloc">📍 पोखरा, नेपाल</div><div class="rstars">★★★★★</div><p class="rtext">"UTI और पथरी दोनों। Stone Crash ने जलन और इंफेक्शन दोनों ठीक किए!"</p><span class="rverify">✅ सत्यापित खरीदार</span></div>
+    <div class="rev-card"><div class="rav">DP</div><div class="rname">दिलीप पौडेल</div><div class="rloc">📍 बीरगंज, नेपाल</div><div class="rstars">★★★★★</div><p class="rtext">"12mm पथरी। ऑपरेशन का डर था। 60 दिन बाद अल्ट्रासाउंड — पथरी गायब!"</p><span class="rverify">✅ सत्यापित खरीदार</span></div>
+    <div class="rev-card"><div class="rav">MG</div><div class="rname">मीना गुरुङ</div><div class="rloc">📍 पोखरा, नेपाल</div><div class="rstars">★★★★★</div><p class="rtext">"20mm की पथरी — 90 दिन का कोर्स — रिपोर्ट पूरी तरह क्लियर। जादू से कम नहीं!"</p><span class="rverify">✅ सत्यापित खरीदार</span></div>
+  </div>
+  <p style="text-align:center;font-size:.72rem;color:var(--gray);margin-top:8px;">← स्वाइप करें →</p>
+</section>
+
+<!-- ============================================================
+  CERTIFICATIONS
+============================================================ -->
+<section id="s-certs" class="sec fi">
+  <p class="sec-title">हमारे <span>प्रमाण-पत्र</span></p>
+  <p class="sec-sub">Government-approved quality standards</p>
+  <div class="gd"></div>
+  <!-- IMAGE SUGGESTION: FSSAI certificate / ISO logo strip -->
+  <div class="img-placeholder img-ph-md" style="margin-bottom:16px;">
+    <span class="ph-size">Certificate Strip</span>
+    <div class="ph-icon">🏅</div>
+    <div class="ph-title">Certification Logos Strip</div>
+    <div class="ph-hint">FSSAI + ISO + GMP + Ayush logos in a row<br>Size: Full width × 80px</div>
+  </div>
+  <div class="cert-card fi"><div class="cert-logo fssai">🏛️</div><div><h4>✅ FSSAI Certified</h4><p>खाद्य सुरक्षा मानक प्राधिकरण द्वारा अनुमोदित।</p></div></div>
+  <div class="cert-card fi"><div class="cert-logo iso">🏅</div><div><h4>✅ ISO Approved</h4><p>International quality controls certified.</p></div></div>
+  <div class="cert-card fi"><div class="cert-logo gmp">🔬</div><div><h4>✅ GMP Manufacturing</h4><p>Good Manufacturing Practices followed.</p></div></div>
+  <div class="cert-card fi"><div class="cert-logo nat">🌿</div><div><h4>✅ 100% Natural</h4><p>Only natural Ayurvedic herbs used.</p></div></div>
+  <div class="cert-card fi"><div class="cert-logo noside">🛡️</div><div><h4>✅ No Known Side Effects</h4><p>Completely safe for all ages.</p></div></div>
+</section>
+
+<!-- ============================================================
+  SHIPPING INFO  [NEW SECTION 7]
+============================================================ -->
+<section id="s-ship" class="fi">
+  <p class="sec-title" style="color:#ffe066;text-align:center;padding:0 16px;">डिलीवरी <span style="color:#fff;">जानकारी</span></p>
+  <div class="gd" style="background:#ffe066;"></div>
+  <div class="ship-cards" style="padding:0 16px;">
+    <div class="ship-card"><div class="ship-icon">🚚</div><h4>Free Delivery</h4><p>भारत और नेपाल में मुफ्त डिलीवरी</p></div>
+    <div class="ship-card"><div class="ship-icon">💰</div><h4>Free COD</h4><p>Cash on Delivery उपलब्ध — पहले लें, फिर दें</p></div>
+    <div class="ship-card"><div class="ship-icon">📦</div><h4>Secure Packing</h4><p>Tamper-proof sealed packaging</p></div>
+    <div class="ship-card"><div class="ship-icon">⚡</div><h4>Fast Dispatch</h4><p>ऑर्डर के 24 घंटे में dispatch</p></div>
+    <div class="ship-card"><div class="ship-icon">🇳🇵</div><h4>Nepal Delivery</h4><p>बीरगंज, पोखरा, काठमांडू सभी जगह</p></div>
+    <div class="ship-card"><div class="ship-icon">📞</div><h4>Order Tracking</h4><p>WhatsApp पर लाइव ट्रैकिंग</p></div>
+  </div>
+</section>
+
+<!-- ============================================================
+  PRICING
+============================================================ -->
+<section id="s-price" class="sec fi">
+  <p class="sec-title">आज का <span>विशेष ऑफर</span></p>
+  <div class="gd"></div>
+  <div class="price-box fi">
+    <span class="combo-label">🔥 Limited Time Offer</span>
+    <!-- IMAGE SUGGESTION: Both products side-by-side on white background -->
+    <div class="img-placeholder img-ph-md" style="margin-bottom:12px;">
+      <span class="ph-size">Combo Product Image</span>
+      <div class="ph-icon">💊🌿</div>
+      <div class="ph-title">Stone-Go + Stone Crash Combo</div>
+      <div class="ph-hint">Both products on white background<br>Size: 300×160px</div>
+    </div>
+    <h3 style="font-family:'Baloo 2',cursive;font-size:1.4rem;font-weight:800;color:var(--g1);margin-bottom:6px;">Stone-Go + Stone Crash<br>Combo Pack</h3>
+    <div class="orig-price">मूल मूल्य: ₹7,000</div>
+    <div class="disc-price">₹3,999</div>
+    <span class="save-tag">🎉 आज बचाएं ₹3,001!</span>
+    <div class="includes-list">
+      <div class="inc-item"><span class="ck">✅</span> किडनी स्टोन (सभी प्रकार)</div>
+      <div class="inc-item"><span class="ck">✅</span> गॉलब्लैडर स्टोन</div>
+      <div class="inc-item"><span class="ck">✅</span> मूत्र नली की पथरी</div>
+      <div class="inc-item"><span class="ck">✅</span> यूरिनरी ट्रैक्ट इंफेक्शन</div>
+      <div class="inc-item"><span class="ck">✅</span> रीनल कोलिक दर्द</div>
+      <div class="inc-item"><span class="ck">📊</span> Free Diet Chart</div>
+      <div class="inc-item"><span class="ck">🚚</span> Free Fast Delivery</div>
+      <div class="inc-item"><span class="ck">💰</span> Free COD Available</div>
+    </div>
+    <a href="#s-form" class="btn-3d-green">🛒 अभी Order Form भरें</a>
+    <div class="guarantee-strip">
+      <span class="icon">🛡️</span>
+      <p>30 दिन Money-Back Guarantee — असर न दिखे तो पूरे पैसे वापस</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  ORDER FORM  [NEW SECTION 8 — MAIN]
+============================================================ -->
+<section id="s-form" class="sec fi">
+  <p class="sec-title">अभी <span>ऑर्डर करें</span></p>
+  <p class="sec-sub">फॉर्म भरें — हम WhatsApp पर संपर्क करेंगे</p>
+  <div class="gd"></div>
+
+  <div class="form-wrap fi" id="orderForm">
+    <h3>📦 Order Form</h3>
+    <p class="form-sub">सभी जानकारी भरें — 24 घंटे में आपसे संपर्क होगा</p>
+
+    <div class="form-group">
+      <label>आपका पूरा नाम <span>*</span></label>
+      <input type="text" id="f-name" placeholder="जैसे: राजेश कुमार / Rajesh Kumar" required>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>मोबाइल नंबर <span>*</span></label>
+        <input type="tel" id="f-phone" placeholder="+91 या Nepal नंबर" required>
+      </div>
+      <div class="form-group">
+        <label>WhatsApp नंबर</label>
+        <input type="tel" id="f-wa" placeholder="अगर अलग हो">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>उत्पाद चुनें <span>*</span></label>
+      <select id="f-product" required>
+        <option value="">-- उत्पाद चुनें --</option>
+        <option value="combo">🌟 Stone-Go + Stone Crash Combo — ₹3,999 (BEST VALUE)</option>
+        <option value="stonego">💊 Stone-Go Capsule (अकेला) — ₹2,199</option>
+        <option value="stonecrash">🌿 Stone Crash Powder (अकेला) — ₹1,499</option>
+        <option value="3month">📦 3 महीने का Combo Pack — ₹9,999</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>पथरी का प्रकार</label>
+      <select id="f-type">
+        <option value="">-- चुनें --</option>
+        <option>किडनी स्टोन (Kidney Stone)</option>
+        <option>गॉलब्लैडर स्टोन (Gallbladder Stone)</option>
+        <option>दोनों</option>
+        <option>पक्का नहीं</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>पथरी का साइज (अगर पता हो)</label>
+      <input type="text" id="f-size" placeholder="जैसे: 8mm, 12mm, बड़ी आदि">
+    </div>
+
+    <div class="form-group">
+      <label>पूरा डिलीवरी पता <span>*</span></label>
+      <textarea id="f-address" placeholder="घर का पता, गली, मोहल्ला, शहर, राज्य, पिन कोड..." required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>देश</label>
+      <select id="f-country">
+        <option>भारत (India)</option>
+        <option>नेपाल — बीरगंज</option>
+        <option>नेपाल — पोखरा</option>
+        <option>नेपाल — काठमांडू</option>
+        <option>नेपाल — अन्य</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>भुगतान विधि</label>
+      <select id="f-payment">
+        <option>COD (Cash on Delivery) — घर पर पैसे दें</option>
+        <option>UPI / PhonePe / GPay</option>
+        <option>Bank Transfer</option>
+        <option>WhatsApp Pay</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>आपकी समस्या / सवाल (optional)</label>
+      <textarea id="f-msg" placeholder="जैसे: कितने दिन से दर्द है, डॉक्टर ने क्या कहा..."></textarea>
+      <p class="form-note">🔒 आपकी जानकारी पूरी तरह सुरक्षित रहेगी</p>
+    </div>
+
+    <button class="form-submit" onclick="submitOrder()">
+      🛒 WhatsApp पर Order भेजें
+    </button>
+
+    <div class="form-guarantee">
+      <span class="icon">🛡️</span>
+      <p>30 दिन Money-Back Guarantee · Free COD · Free Delivery · Nepal Available</p>
+    </div>
+
+    <div class="form-success" id="formSuccess">
+      <h4>✅ आपका Order भेज दिया गया!</h4>
+      <p>हम 1-2 घंटे में WhatsApp पर संपर्क करेंगे।<br>तब तक WhatsApp खुला रखें।</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  MEDIA / PRESS  [NEW SECTION 9]
+============================================================ -->
+<section id="s-media" class="sec fi">
+  <p class="sec-title">मीडिया में <span>RN Herbal</span></p>
+  <p class="sec-sub">News और Digital Media में हमारी पहचान</p>
+  <div class="gd"></div>
+  <div class="media-row">
+    <div class="media-card fi">
+      <!-- IMAGE: News article screenshot / newspaper clipping -->
+      <div class="img-placeholder" style="min-height:100px;border-radius:8px 8px 0 0;">
+        <div class="ph-icon">📰</div>
+        <div class="ph-title">News Article</div>
+        <div class="ph-hint">Newspaper/online article screenshot</div>
+      </div>
+      <div class="media-body"><h4>आयुर्वेद से पथरी का इलाज</h4><p>RN Herbal की सफलता की कहानी...</p></div>
+    </div>
+    <div class="media-card fi">
+      <!-- IMAGE: TV show / YouTube interview screenshot -->
+      <div class="img-placeholder" style="min-height:100px;border-radius:8px 8px 0 0;">
+        <div class="ph-icon">📺</div>
+        <div class="ph-title">TV / YouTube Feature</div>
+        <div class="ph-hint">TV show or YouTube screenshot</div>
+      </div>
+      <div class="media-body"><h4>Natural Stone Removal</h4><p>बिना ऑपरेशन के पथरी का इलाज...</p></div>
+    </div>
+    <div class="media-card fi">
+      <!-- IMAGE: Social media post / viral Facebook post screenshot -->
+      <div class="img-placeholder" style="min-height:100px;border-radius:8px 8px 0 0;">
+        <div class="ph-icon">📱</div>
+        <div class="ph-title">Social Media</div>
+        <div class="ph-hint">Facebook/Instagram viral post</div>
+      </div>
+      <div class="media-body"><h4>1 लाख+ Shares</h4><p>Social media पर वायरल कहानी...</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  REFER & SHARE  [NEW SECTION 10]
+============================================================ -->
+<section id="s-refer" class="sec fi">
+  <div class="refer-box">
+    <h3>👨‍👩‍👧‍👦 दोस्तों को बताएं — उनकी मदद करें</h3>
+    <p>अगर आपके परिवार या दोस्त को भी पथरी की समस्या है तो यह page share करें। आपकी एक शेयर किसी की जिंदगी बदल सकती है।</p>
+    <div class="share-btns">
+      <a href="https://wa.me/?text=पथरी का आयुर्वेदिक इलाज — बिना ऑपरेशन के! RN Herbal Stone-Go Capsule. अभी देखें।" class="share-btn share-wa" target="_blank">📱 WhatsApp Share</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://rnherbal.com" class="share-btn share-fb" target="_blank">👍 Facebook Share</a>
+      <a href="#" onclick="copyLink()" class="share-btn share-copy">🔗 Link Copy</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  FAQ
+============================================================ -->
+<section id="s-faq" class="sec fi">
+  <p class="sec-title">अक्सर पूछे जाने वाले <span>सवाल</span></p>
+  <div class="gd"></div>
+  <div class="faq-item"><div class="faq-q" onclick="faq(this)">कितने दिनों में असर दिखता है?<span class="faq-tog">+</span></div><div class="faq-a">2-4 हफ्तों में दर्द में राहत मिलती है। पूर्ण उपचार के लिए 45-90 दिन का कोर्स करें।</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faq(this)">क्या कोई साइड इफेक्ट है?<span class="faq-tog">+</span></div><div class="faq-a">नहीं। 100% प्राकृतिक जड़ी-बूटियों से बना है। कोई हानिकारक साइड इफेक्ट नहीं है।</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faq(this)">क्या यह नेपाल में मिलेगा?<span class="faq-tog">+</span></div><div class="faq-a">हाँ! बीरगंज, पोखरा, काठमांडू सभी जगह Delivery होती है। WhatsApp करें।</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faq(this)">20mm से बड़ी पथरी में काम करेगा?<span class="faq-tog">+</span></div><div class="faq-a">6mm-20mm तक की पथरी में बहुत असरकारक है। इससे बड़ी में डॉक्टर की सलाह लें।</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faq(this)">COD (Cash on Delivery) मिलेगा?<span class="faq-tog">+</span></div><div class="faq-a">हाँ! घर पर डिलीवरी लेकर पैसे दे सकते हैं। Free COD Available.</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faq(this)">Money-Back Guarantee कैसे काम करती है?<span class="faq-tog">+</span></div><div class="faq-a">30 दिन में असर न दिखे तो पूरे पैसे वापस। WhatsApp पर contact करें — कोई सवाल नहीं।</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faq(this)">क्या दोनों products एक साथ लेना जरूरी है?<span class="faq-tog">+</span></div><div class="faq-a">Combo लेने से 2x तेज असर होता है। Capsule पथरी तोड़ता है और Powder flush करता है। दोनों मिलकर बेहतर काम करते हैं।</div></div>
+  <div class="faq-item"><div class="faq-q" onclick="faq(this)">गर्भवती महिलाएं ले सकती हैं?<span class="faq-tog">+</span></div><div class="faq-a">गर्भवती और स्तनपान कराने वाली महिलाओं को पहले अपने चिकित्सक से परामर्श लेना चाहिए।</div></div>
+</section>
+
+<!-- ============================================================
+  FINAL CTA
+============================================================ -->
+<section id="s-cta">
+  <h2>आज ही पाएं पथरी से मुक्ति!</h2>
+  <p>बिना ऑपरेशन, बिना दर्द, बिना साइड इफेक्ट — सिर्फ ₹3,999 में।<br>1 लाख से ज्यादा लोगों का भरोसा।</p>
+  <a href="https://wa.me/91XXXXXXXXXX?text=मुझे Stone-Go Combo चाहिए" class="wa-btn" target="_blank">📱 WhatsApp पर ऑर्डर करें</a>
+  <br><br>
+  <a href="tel:+91XXXXXXXXXX" class="call-btn">📞 अभी Call करें</a>
+  <div class="cta-features">
+    <span class="cta-feat">✅ Free Delivery</span>
+    <span class="cta-feat">✅ COD Available</span>
+    <span class="cta-feat">✅ Nepal Delivery</span>
+    <span class="cta-feat">✅ 30-Day Guarantee</span>
+  </div>
+</section>
+
+<!-- ============================================================
+  FOOTER
+============================================================ -->
+<footer>
+  <div class="fname">RN Herbal</div>
+  <div class="footer-links">
+    <a href="#s-product">Product</a>
+    <a href="#s-price">Pricing</a>
+    <a href="#s-form">Order</a>
+    <a href="#s-faq">FAQ</a>
+    <a href="#s-cta">Contact</a>
+  </div>
+  <p>Manufactured in Haryana, India · FSSAI · ISO · GMP Certified<br>
+  © 2024 RN Herbal. All Rights Reserved.<br>
+  📱 WhatsApp: +91 XXXXXXXXXX · Nepal Delivery Available</p>
+  <p style="margin-top:8px;font-size:.7rem;opacity:.6;">यह जानकारी केवल शैक्षिक उद्देश्य के लिए है। गंभीर स्थिति में चिकित्सक से परामर्श लें।</p>
+</footer>
+
+<!-- ============================================================
+  STICKY BOTTOM BAR
+============================================================ -->
+<div class="sticky-bar">
+  <div class="sticky-info">
+    <div class="features">
+      <span>📊 Free Diet</span>
+      <span>🚚 Free Delivery</span>
+      <span>💰 Free COD</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:4px;">
+      <span style="font-size:.62rem;color:rgba(255,255,255,.7);">⏰ ऑफर समाप्त:</span>
+      <span class="timer" id="countdown">04:30:00</span>
+    </div>
+  </div>
+  <a href="#s-form" class="sticky-order-btn">🛒 Order Now</a>
+</div>
+
+<script>
+/* ============================================================
+   FADE-IN OBSERVER
+============================================================ */
+const io = new IntersectionObserver(e=>{
+  e.forEach(x=>{ if(x.isIntersecting) x.target.classList.add('on'); });
+},{threshold:0.06});
+document.querySelectorAll('.fi').forEach(el=>io.observe(el));
+
+/* ============================================================
+   COUNTDOWN TIMER
+============================================================ */
+let total = 4*3600 + 30*60;
+function tick(){
+  total--;
+  if(total<0) total=4*3600+30*60;
+  const h=Math.floor(total/3600),m=Math.floor((total%3600)/60),s=total%60;
+  const el=document.getElementById('countdown');
+  if(el) el.textContent=String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+setInterval(tick,1000);
+
+/* ============================================================
+   FAQ
+============================================================ */
+function faq(el){
+  const a=el.nextElementSibling;
+  const open=a.classList.contains('show');
+  document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('show'));
+  document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open'));
+  if(!open){a.classList.add('show');el.classList.add('open');}
+}
+
+/* ============================================================
+   COUNTER ANIMATION
+============================================================ */
+function animCount(id,target,suffix,duration){
+  const el=document.getElementById(id);
+  if(!el) return;
+  let start=0;
+  const step=target/60;
+  const t=setInterval(()=>{
+    start=Math.min(start+step,target);
+    el.textContent=Math.floor(start).toLocaleString('en-IN')+(suffix||'');
+    if(start>=target) clearInterval(t);
+  },duration/60);
+}
+// trigger when section visible
+const cSec=document.getElementById('s-counter');
+if(cSec){
+  const cIo=new IntersectionObserver(e=>{
+    if(e[0].isIntersecting){
+      animCount('c1',5000,'+',2000);
+      animCount('c2',98,'%',1500);
+      animCount('c3',15,'+',1500);
+      animCount('c4',8,'',1200);
+      cIo.disconnect();
+    }
+  },{threshold:0.3});
+  cIo.observe(cSec);
+}
+
+/* ============================================================
+   VIDEO SLIDER DOTS
+============================================================ */
+const vs=document.getElementById('vidSlider');
+const dotsEl=document.getElementById('vidDots');
+if(vs && dotsEl){
+  const dots=dotsEl.querySelectorAll('.vdot');
+  vs.addEventListener('scroll',()=>{
+    const cardW=vs.querySelector('.vid-card').offsetWidth+14;
+    const idx=Math.round(vs.scrollLeft/cardW);
+    dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
+  });
+}
+function scrollToVid(i){
+  if(!vs) return;
+  const cardW=vs.querySelector('.vid-card').offsetWidth+14;
+  vs.scrollTo({left:i*cardW,behavior:'smooth'});
+}
+
+/* ============================================================
+   VIDEO PLAY (placeholder — replace with real video logic)
+============================================================ */
+function playVideo(thumb,id){
+  // When you have real video URLs, replace this:
+  // For YouTube: window.open('https://youtu.be/YOUR_VIDEO_ID','_blank');
+  // For WhatsApp video: window.open('https://wa.me/91XXXXXXXXXX?text=Video '+id,'_blank');
+  const msg=`मुझे ${id} वीडियो देखना है / Video ${id} testimonial`;
+  window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(msg)}`,'_blank');
+}
+
+/* ============================================================
+   ORDER FORM SUBMIT
+============================================================ */
+function submitOrder(){
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const product=document.getElementById('f-product').value;
+  const address=document.getElementById('f-address').value.trim();
+
+  if(!name||!phone||!product||!address){
+    alert('⚠️ कृपया सभी जरूरी जानकारी (*) भरें');
+    return;
+  }
+
+  const wa=document.getElementById('f-wa').value.trim();
+  const type=document.getElementById('f-type').value;
+  const size=document.getElementById('f-size').value.trim();
+  const country=document.getElementById('f-country').value;
+  const payment=document.getElementById('f-payment').value;
+  const msg=document.getElementById('f-msg').value.trim();
+
+  const text=`🌿 *RN Herbal — New Order*
+
+👤 *नाम:* ${name}
+📱 *मोबाइल:* ${phone}
+${wa?`💬 *WhatsApp:* ${wa}\n`:''}📦 *उत्पाद:* ${product}
+🔴 *पथरी का प्रकार:* ${type||'नहीं बताया'}
+📏 *साइज:* ${size||'नहीं बताया'}
+🏠 *पता:* ${address}
+🌍 *देश:* ${country}
+💳 *भुगतान:* ${payment}
+${msg?`💬 *संदेश:* ${msg}`:''}
+
+✅ Please confirm order and delivery time.`;
+
+  window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(text)}`,'_blank');
+
+  // Show success message
+  document.getElementById('formSuccess').style.display='block';
+  document.getElementById('orderForm').scrollIntoView({behavior:'smooth',block:'end'});
+}
+
+/* ============================================================
+   COPY LINK
+============================================================ */
+function copyLink(){
+  navigator.clipboard.writeText(window.location.href).then(()=>{
+    alert('✅ Link copied! Share करें।');
+  }).catch(()=>{
+    alert('Link: '+window.location.href);
+  });
+}
+</script>
+</body>
+</html>
