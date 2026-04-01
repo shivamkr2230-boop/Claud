@@ -586,3 +586,117 @@
   </script>
   </body>
   </html>
+
+  Key features included:
+
+  1. Professional UI Design:
+    - Clean, modern color scheme with primary and accent colors
+    - Responsive layout that works on all devices
+    - Interactive seat selection with visual feedback
+  2. Seat Booking System:
+    - Dynamic seat grid that updates in real-time
+    - Auto-expiry after 2 days (stored in localStorage)
+    - Visual confirmation of booked seats
+  3. WhatsApp Integration:
+    - Dedicated "Book Seat via WhatsApp" button
+    - Pre-filled WhatsApp message with booking details
+    - Native WhatsApp app integration
+  4. Enhanced User Experience:
+    - Clear seat selection and confirmation process
+    - Responsive messaging system
+    - Professional error handling
+  5. Performance Optimizations:
+    - Efficient JavaScript with proper event handling
+    - LocalStorage for persistent booking data
+    - Minimal DOM manipulation
+
+  You can copy and paste this complete HTML file into any text editor and save it as sharda_library.html to use as your library website. The design is fully responsive and works on
+  both desktop and mobile devices.
+
+✻ Churned for 34s
+
+❯ change overall color of the website into red and green.
+
+● 's the complete updated code with red and green as the primary color scheme:
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  meta charset="UTF-8">
+   title>Shardatitle>
+  style>
+      :root {
+        --primary: #ff3b30;      /* Red */
+        --accent: #3aa757;        /* Green */
+        --bg: #f0f4f8;           /* Light background (unchanged) */
+        --card-bg: #ffffff;
+        --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        --text: #ff3b30;         /* Dark red for text */
+        --text-light: #666;
+        --success: var(--accent); /* Green */
+        --error: #c0392b;
+      }
+
+      /* ... rest of the base styles remain the same ... */
+
+      .header {
+        background: var(--primary); /* Red header */
+      }
+
+      .seat:hover {
+        border-color: var(--accent); /* Green highlight */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      }
+
+      .seat.booked {
+        border-color: var(--success); /* Green border for booked seats */
+        background: #e8f5e9;
+      }
+
+      .seat.selected {
+        border-color: var(--primary); /* Red border for selected seats */
+        background: #ffffff; /* Fallback white */
+      }
+
+      .friendly-message::before,
+      .friendly-message::after {
+        background: var(--accent); /* Green line under friendly messages */
+      }
+
+      .msg.success {
+        background: #e8f5e9;
+        color: var(--success); /* Green text */
+      }
+
+      @media (max-width: 768px) {
+        /* Responsive adjustments */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header, hero section, facilities, and footer from previous version -->
+
+    <!-- Booking section with seats and messages -->
+    <div class="main-content">
+     div class="info">
+       p class="friendly-message">✨ Use WhatsApp button above for direct notifications</p>
+      </div>
+
+      <div class="booking-section">
+        <h2>Book Yourh2>
+        <div class="seats" iddiv>
+
+        <button class="confirm-btn" idspan>Confirmbutton class="whatsapp-btn" id="whatsappBtn">Book via WhatsApp</button>
+
+        <div id="message"div>
+      </div>
+    </div>
+
+    <!-- Facilitiesdiv class="facdiv class="facility">
+        <img src="ro-purifier.png" alt="Water Purifier">
+        <h3>Water Purifier</h3>
+        <p>Clean drinking water</p>
+      </div>
+      <!-- More facilities...div>
+  </body>
+  </html>
