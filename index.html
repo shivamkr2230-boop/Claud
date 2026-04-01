@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <title>Sharda Library</title>
+  <style>
+    :root { --primary:#2c7a7b; --accent:#f6c567;
+  --bg:#f0f4f8; }
+    body { font-family:Arial,Helvetica,sans-serif;
+  margin:0; background:var(--bg); color:#333; }
+    .header { display:flex; justify-content:space-between;
+  align-items:center; background:var(--primary);
+  padding:1rem; color:#fff; }
+    .header img { height:40px; }
+    .header .actions { display:flex; gap:1rem; }
+    .header button { background:var(--accent); border:none;
+   padding:0.5rem 1rem; cursor:pointer; border-radius:4px;
+  }
+    .content { padding:1rem; max-width:900px; margin:auto;
+  }
+    .facilities { display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+   gap:1rem; margin:2rem 0; }
+    .facility { text-align:center; }
+    .facility img { width:80px; height:80px;
+  object-fit:cover; border-radius:8px; background:#fff;
+  padding:0.5rem; }
+    .booking { background:#fff; padding:1rem;
+  border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  }
+    .booking h2 { margin-top:0; }
+    .seats { display:flex; flex-wrap:wrap; gap:0.5rem;
+  margin:1rem 0; }
+    .seat { background:#e1e8ed; padding:0.5rem 1rem;
+  border-radius:4px; cursor:pointer; transition:background
+  0.2s; }
+    .seat:hover { background:#d2e0e6; }
+    .seat.booked { background:#a3d9a5; color:#fff; }
+    .seat.confirmed { background:#48bb78; color:#fff; }
+    .seat.available { background:#c0d6d6; color:#fff; }
+    .seat.selected { background:var(--primary); color:#fff;
+   }
+    .count { font-weight:bold; margin-bottom:1rem; }
+    .msg { margin:1rem 0; padding:0.75rem;
+  border-radius:4px; }
+    .expired { background:#ffdddd; }
+    .expired a { color:#c0392b; }
+  </style>
+  </head>
+  <body>
+  <header class="header">
+    <img src="logo.png" alt="Library Logo">
+    <div class="actions">
+      <button id="bookBtn">Book Seat</button>
+    </div>
+  </header>
+
+  <main class="content">
+    <h1>Sharda Library</h1>
+    <p>Welcome to Sharda Library – a vibrant space for
+  students and readers.</p>
+
+    <div class="count" id="seatCount">Available Seats:
+  <span id="count">18</span></div>
+
+    <div class="booking">
+      <h2>Reserve a Seat</h2>
+      <div class="seats" id="seats"></div>
+      <div id="message" class="msg"></div>
+      <small>Seats automatically cancel if not confirmed
+  within <strong>2 days</strong>.</small>
+    </div>
+
+    <section class="facilities">
+      <div class="facility">
+        <img src="ro-purifier.png" alt="RO Water Purifier">
+        <p>RO Water Purifier</p>
+      </div>
+      <div class="facility">
+        <img src="restroom.png" alt="Clean Restrooms">
+        <p>Hygienic Restrooms</p>
+      </div>
+      <div class="facility">
+        <img src="shoe.png" alt="Shoe Storage">
+        <p>Shoe Storage</p>
+      </div>
+      <div class="facility">
+        <img src="ac.png" alt="Air‑Conditioned Rooms">
+        <p>Air‑Conditioned Rooms</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const TOTAL_SEATS = 18;
+    const BOOKING_KEY = 'libraryBooking';
+    const EXPIRY_MS = 2 * 24 * 60 * 60 * 1000; // 2 days
+
+    // Load or init booking data
+    let bookings =
+  JSON.parse(localStorage.getItem(BOOKING_KEY)||'{}');
+    let seatCount = TOTAL_SEATS -
+  Object.keys(bookings).length;
+
+    function renderSeats() {
+      const container = document.getElementById('seats');
+      container.innerHTML = '';
+      for(let i=1;i<=TOTAL_SEATS;i++) {
+        const seatDiv = document.createElement('div');
+        seatDiv.className = 'seat';
+        seatDiv.textContent = `Seat ${i}`;
+        if(bookings[i]) {
+          seatDiv.classList.add('booked', 'confirmed');
+          seatDiv.title = 'Booked';
+        }
+        seatDiv.onclick = () => selectSeat(i);
+        container.appendChild(seatDiv);
+      }
+      document.getElementById('count').textContent =
+  seatCount;
+    }
+
+    function selectSeat(id) {
+      // remove previous selection
+      document.querySelectorAll('.seat.selected').forEach(e
+  l=>el.classList.remove('selected'));
+      // mark new selection
+      const sel =
+  document.getElementById('seats').children[id-1];
+      sel.classList.add('selected');
+    }
+
+    function confirmBooking() {
+      const selected =
+  document.querySelector('.seat.selected');
+      if(!selected) { showMsg('Please select a seat
+  first.', true); return; }
+      const seatId = selected.textContent.replace('Seat
+  ','');
+      if(bookings[seatId]) { showMsg('Seat already
+  booked.', true); return; }
+      bookings[seatId] = Date.now();
+      localStorage.setItem(BOOKING_KEY,
+  JSON.stringify(bookings));
+      seatCount--;
+      selected.classList.remove('selected');
+      selected.classList.add('booked','confirmed');
+      renderSeats();
+      showMsg(`Seat ${seatId} booked! You have 2 days to
+  confirm.`, false);
+      setTimeout(releaseSeat, EXPIRY_MS, seatId);
+    }
+
+    function releaseSeat(seatId) {
+      if(!bookings[seatId]) return;
+      delete bookings[seatId];
+      localStorage.setItem(BOOKING_KEY,
+  JSON.stringify(bookings));
+      seatCount++;
+      renderSeats();
+      showMsg(`Booking for Seat ${seatId} expired and was
+  released.`, true);
+    }
+
+    function showMsg(text, isError) {
+      const msg = document.getElementById('message');
+      msg.textContent = text;
+      msg.style.background = isError ? '#ffebee' :
+  '#e8f5e9';
+      msg.style.border = '1px solid ' +
+  (isError?'#c62828':'#2e7d32');
+    }
+
+    // Auto‑expire old bookings on page load
+    function purgeExpired() {
+      const now = Date.now();
+      Object.keys(bookings).forEach(id=> {
+        if(now - bookings[id] > EXPIRY_MS) {
+          delete bookings[id];
+          seatCount++;
+        }
+      });
+      localStorage.setItem(BOOKING_KEY,
+  JSON.stringify(bookings));
+      renderSeats();
+    }
+
+    // Initialize
+    purgeExpired();
+    renderSeats();
+
+    // Event listeners
+    document.getElementById('bookBtn').onclick =
+  confirmBooking;
+  </script>
+  </body>
+  </html>
