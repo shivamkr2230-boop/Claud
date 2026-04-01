@@ -1,1 +1,291 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RN Herbal — Stone-Go | पथरी का प्राकृतिक समाधान</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ROOT & RESET
+============================================================ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Hind',sans-serif;background:#fff;color:#1a1a1a;padding-bottom:80px;overflow-x:hidden;}
+:root{
+  --g1:#1b6b3a;--g2:#2e9c57;--g3:#4cbb78;--g4:#e6f7ed;
+  --red:#c0392b;--orange:#d4600a;--gold:#c9910a;
+  --white:#fff;--lgray:#f7f7f7;--dark:#1a1a1a;--gray:#555;
+}
+/* ============================================================
+   IMAGE PLACEHOLDER SYSTEM
+============================================================ */
+.img-placeholder{
+  background:linear-gradient(135deg,#e8f5ee 0%,#d4edda 50%,#c3e6cb 100%);
+  border:2px dashed var(--g2);
+  border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:16px 12px;
+  position:relative;overflow:hidden;
+  min-height:120px;
+}
+.img-placeholder::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(46,156,87,.05) 8px,rgba(46,156,87,.05) 16px);
+}
+.img-placeholder .ph-icon{font-size:2rem;margin-bottom:6px;position:relative;z-index:1;}
+.img-placeholder .ph-title{font-size:.78rem;font-weight:700;color:var(--g1);margin-bottom:3px;position:relative;z-index:1;}
+.img-placeholder .ph-hint{font-size:.66rem;color:var(--g2);position:relative;z-index:1;line-height:1.4;}
+.img-placeholder .ph-size{
+  position:absolute;top:6px;right:8px;
+  font-size:.6rem;background:var(--g1);color:#fff;
+  padding:2px 6px;border-radius:6px;
+}
+/* Small placeholder for symptom cards */
+.img-ph-sm{min-height:70px;width:80px;flex-shrink:0;border-radius:8px;padding:8px 6px;}
+.img-ph-sm .ph-icon{font-size:1.2rem;margin-bottom:2px;}
+.img-ph-sm .ph-title{font-size:.58rem;}
+.img-ph-sm .ph-hint{display:none;}
+/* Medium placeholder */
+.img-ph-md{min-height:100px;width:100%;}
+/* Large placeholder */
+.img-ph-lg{min-height:180px;width:100%;}
+/* Hero placeholder */
+.img-ph-hero{min-height:140px;width:100%;border-radius:10px;margin-bottom:10px;}
+/* Herb placeholder */
+.img-ph-herb{width:60px;height:50px;min-height:50px;border-radius:8px;flex-shrink:0;padding:6px 4px;}
+.img-ph-herb .ph-icon{font-size:1rem;margin-bottom:0;}
+.img-ph-herb .ph-title{font-size:.55rem;}
+/* Step placeholder */
+.img-ph-step{width:70px;height:60px;min-height:60px;flex-shrink:0;border-radius:8px;padding:6px;}
+/* VS card placeholder */
+.img-ph-vs{width:100%;height:80px;min-height:80px;border-radius:8px;margin-bottom:8px;}
+/* Testimonial photo */
+.img-ph-testi{width:100%;height:160px;min-height:160px;border-radius:10px;margin-bottom:12px;}
+/* BA placeholder */
+.img-ph-ba{width:100%;height:200px;min-height:200px;border-radius:10px 10px 0 0;}
 
+/* ============================================================
+   STICKY TOP NAV
+============================================================ */
+.topnav{
+  position:fixed;top:0;left:0;right:0;z-index:900;
+  background:var(--g1);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 16px;box-shadow:0 2px 10px rgba(0,0,0,.25);
+}
+.brand-name{font-family:'Baloo 2',cursive;font-size:1.2rem;color:#fff;font-weight:800;display:flex;flex-direction:column;line-height:1.1;}
+.brand-name small{font-size:.6rem;font-weight:400;opacity:.8;letter-spacing:1.5px;text-transform:uppercase;}
+.nav-links-row{display:none;}
+@media(min-width:600px){.nav-links-row{display:flex;gap:16px;list-style:none;}
+  .nav-links-row a{color:rgba(255,255,255,.85);font-size:.75rem;text-decoration:none;font-weight:600;}}
+.nav-order-btn{background:var(--gold);color:#fff;padding:8px 18px;border-radius:20px;font-size:.82rem;font-weight:700;box-shadow:0 3px 10px rgba(0,0,0,.2);text-decoration:none;}
+
+/* ============================================================
+   HERO
+============================================================ */
+#hero{
+  margin-top:56px;
+  background:linear-gradient(160deg,#1b6b3a 0%,#2e9c57 60%,#4cbb78 100%);
+  padding:28px 16px 40px;text-align:center;position:relative;overflow:hidden;
+}
+#hero::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:30px;background:#fff;clip-path:ellipse(55% 100% at 50% 100%);}
+.hero-tag{display:inline-block;background:rgba(255,255,255,.18);color:#fff;font-size:.7rem;letter-spacing:2px;padding:4px 14px;border-radius:12px;margin-bottom:10px;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);}
+.hero-brand{font-family:'Baloo 2',cursive;font-size:2rem;color:#fff;font-weight:800;line-height:1.1;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.2);}
+.hero-brand span{color:#ffe066;}
+.hero-sub-title{font-size:.85rem;color:rgba(255,255,255,.85);margin-bottom:18px;}
+.hero-question-box{background:#fff;border-radius:14px;padding:16px;margin:0 auto 16px;max-width:400px;text-align:left;box-shadow:0 4px 20px rgba(0,0,0,.15);}
+.hero-q-text{font-size:1rem;font-weight:700;color:var(--dark);line-height:1.4;margin-bottom:6px;}
+.hero-q-text span{color:var(--red);}
+.hero-warning{background:#fff8e1;border-radius:8px;padding:12px 14px;border-left:4px solid var(--gold);margin-top:8px;}
+.hero-warning p{font-size:.88rem;color:var(--dark);line-height:1.6;}
+.hero-warning strong{color:var(--g1);}
+.trust-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0;}
+.trust-pill{background:rgba(255,255,255,.15);color:#fff;font-size:.72rem;padding:4px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.3);}
+.hero-product-wrap{display:flex;gap:12px;justify-content:center;margin:16px 0;flex-wrap:wrap;}
+.prod-mini{background:#fff;border-radius:12px;padding:14px 12px;width:145px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.15);}
+.prod-mini h4{font-size:.82rem;font-weight:700;color:var(--g1);margin-bottom:3px;}
+.prod-mini p{font-size:.68rem;color:var(--gray);}
+.prod-mini .ptag{font-size:.62rem;background:var(--g1);color:#fff;padding:2px 6px;border-radius:8px;display:inline-block;margin-top:4px;}
+
+/* ============================================================
+   STICKY BOTTOM BAR
+============================================================ */
+.sticky-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:950;
+  background:var(--g1);padding:10px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  box-shadow:0 -2px 16px rgba(0,0,0,.25);
+}
+.sticky-info{font-size:.7rem;color:rgba(255,255,255,.85);}
+.sticky-info .features{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:3px;}
+.sticky-info .features span{font-size:.63rem;}
+.timer{font-size:1rem;font-weight:700;color:#ffe066;font-family:monospace;}
+.sticky-order-btn{background:var(--gold);color:#fff;padding:10px 18px;border-radius:20px;font-size:.82rem;font-weight:700;white-space:nowrap;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.25);flex-shrink:0;}
+
+/* ============================================================
+   SECTION BASE
+============================================================ */
+.sec{padding:36px 16px;}
+.sec-title{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;color:var(--dark);text-align:center;margin-bottom:6px;line-height:1.3;}
+.sec-title span{color:var(--g1);}
+.sec-sub{text-align:center;font-size:.85rem;color:var(--gray);margin-bottom:20px;line-height:1.6;}
+.gd{width:48px;height:3px;background:var(--g2);border-radius:2px;margin:8px auto 20px;}
+
+/* ============================================================
+   TRUST BADGES
+============================================================ */
+#s-trust1{background:var(--g4);}
+.trust3-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;}
+.t3badge{background:#fff;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:8px;box-shadow:0 2px 8px rgba(0,0,0,.08);border:1px solid #d4edda;min-width:130px;}
+.t3badge .icon{font-size:1.3rem;}
+.t3badge p{font-size:.78rem;font-weight:600;color:var(--g1);}
+.trust-big-banner{background:var(--g1);color:#fff;border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:10px;max-width:380px;margin:0 auto;}
+.trust-big-banner .icon{font-size:1.6rem;}
+.trust-big-banner p{font-size:.9rem;font-weight:700;}
+
+/* ============================================================
+   SYMPTOMS
+============================================================ */
+#s-symptoms{background:#fff;}
+.symptom-header{background:linear-gradient(135deg,#fff5f5,#ffe8e8);border-radius:12px;padding:14px 16px;text-align:center;border:2px solid #ffcccc;margin-bottom:20px;}
+.symptom-header p{font-size:1rem;font-weight:700;color:var(--red);line-height:1.5;}
+.symptom-header p span{color:var(--g1);}
+.symptom-card{border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.symptom-card.red-bg{background:#fff0f0;border:1px solid #ffd5d5;}
+.symptom-card.pink-bg{background:#fff5f8;border:1px solid #ffd6e7;}
+.symptom-card.yellow-bg{background:#fffbf0;border:1px solid #ffe8a0;}
+.symptom-card .sc-right h4{font-size:.92rem;font-weight:700;color:var(--red);margin-bottom:3px;}
+.symptom-card .sc-right p{font-size:.75rem;color:var(--gray);line-height:1.4;}
+
+/* ============================================================
+   PRODUCT INTRO
+============================================================ */
+#s-product{background:linear-gradient(160deg,var(--g1),var(--g2));padding:36px 16px;text-align:center;color:#fff;}
+.prod-name-big{font-family:'Baloo 2',cursive;font-size:2.2rem;font-weight:800;color:#ffe066;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.2);}
+.prod-tagline{font-size:1rem;color:rgba(255,255,255,.9);margin-bottom:20px;}
+.prod-bottle{background:#fff;border-radius:16px;padding:20px;max-width:280px;margin:0 auto 20px;box-shadow:0 8px 32px rgba(0,0,0,.2);}
+.prod-bottle h3{font-size:1rem;font-weight:700;color:var(--g1);margin-bottom:6px;}
+.prod-bottle .caps{font-size:.75rem;background:var(--g1);color:#fff;padding:3px 10px;border-radius:10px;display:inline-block;}
+.no-surg-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:10px 20px;border-radius:12px;font-size:1rem;font-weight:700;margin-bottom:16px;}
+.prod-checks{background:rgba(255,255,255,.12);border-radius:12px;padding:16px;max-width:340px;margin:0 auto 16px;text-align:left;}
+.prod-check-item{display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+.prod-check-item:last-child{border-bottom:none;}
+.prod-check-item .ck{color:#ffe066;font-weight:700;font-size:1rem;flex-shrink:0;margin-top:2px;}
+.prod-check-item p{font-size:.88rem;color:rgba(255,255,255,.95);line-height:1.4;}
+.prod-check-item strong{color:#ffe066;}
+.cert-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.cert-b{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:8px;font-size:.75rem;font-weight:700;}
+
+/* ============================================================
+   4-STEP
+============================================================ */
+#s-steps{background:#fff;}
+.step4-card{background:var(--lgray);border-radius:12px;padding:16px;display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;border-left:4px solid var(--g2);}
+.step4-card .sc-right h4{font-size:.92rem;font-weight:700;margin-bottom:4px;}
+.step4-card .sc-right h4 span{color:var(--g2);}
+.step4-card .sc-right p{font-size:.8rem;color:var(--gray);line-height:1.5;}
+.step4-card .sc-right em{font-size:.72rem;color:var(--g1);font-style:normal;opacity:.8;}
+
+/* ============================================================
+   WHY STONE CARE
+============================================================ */
+#s-why{background:var(--g4);}
+.cause-box{background:#fff;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.cause-box h4{font-size:.92rem;font-weight:700;color:var(--g1);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.cause-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;margin-bottom:6px;}
+.cause-item.heat{background:#fff5e0;}.cause-item.dry{background:#fff8e8;}.cause-item.tox{background:#f5f0ff;}
+.cause-item .ci{font-size:1.2rem;flex-shrink:0;}
+.cause-item p{font-size:.85rem;font-weight:600;color:var(--dark);}
+.cause-item small{display:block;font-size:.72rem;color:var(--gray);font-weight:400;}
+.vs-divider{display:flex;align-items:center;gap:12px;margin:16px 0;}
+.vs-divider .line{flex:1;height:2px;background:linear-gradient(90deg,transparent,var(--g2));}
+.vs-divider .line.r{background:linear-gradient(270deg,transparent,var(--g2));}
+.vs-circle{width:44px;height:44px;border-radius:50%;background:var(--g1);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:800;flex-shrink:0;}
+.ayur-box{background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:12px;padding:16px;color:#fff;}
+.ayur-box h4{font-size:.92rem;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.ayur-item{display:flex;align-items:flex-start;gap:10px;background:rgba(255,255,255,.12);border-radius:8px;padding:10px;margin-bottom:8px;}
+.ayur-item .num{width:26px;height:26px;border-radius:50%;background:#ffe066;color:var(--g1);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;flex-shrink:0;}
+.ayur-item p{font-size:.83rem;line-height:1.4;color:rgba(255,255,255,.95);}
+.ayur-item strong{color:#ffe066;}
+.result-banner{background:var(--g2);color:#fff;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:10px;margin-top:12px;}
+.result-banner .icon{font-size:1.4rem;}
+.result-banner p{font-size:.88rem;font-weight:700;}
+.modern-diff{background:#fff3e0;border-radius:12px;padding:14px 16px;margin-top:14px;border-left:4px solid var(--orange);}
+.modern-diff h4{font-size:.88rem;font-weight:700;color:var(--orange);margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.modern-diff p{font-size:.83rem;color:var(--dark);line-height:1.6;}
+
+/* ============================================================
+   HERBS
+============================================================ */
+#s-herbs{background:linear-gradient(160deg,var(--g1),#145a2e);padding:36px 16px;}
+.herb-card{background:#fff;border-radius:12px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.herb-left{display:flex;align-items:center;gap:12px;}
+.herb-left h4{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:700;color:var(--g1);margin-bottom:2px;}
+.herb-left p{font-size:.75rem;color:var(--gray);}
+.herb-icon{font-size:1.6rem;}
+
+/* ============================================================
+   VS COMPARISON
+============================================================ */
+#s-vs{background:#fff;}
+.vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.vs-card{border-radius:10px;padding:12px;text-align:center;}
+.vs-card.bad{background:#fff0f0;border:2px solid #ffcccc;}
+.vs-card.good{background:#e8f5ee;border:2px solid #b7e4c7;}
+.vs-card .label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
+.vs-card.bad .label{color:var(--red);}
+.vs-card.good .label{color:var(--g1);}
+.vs-card h4{font-size:.82rem;font-weight:700;line-height:1.3;}
+.vs-card.bad h4{color:var(--red);}
+.vs-card.good h4{color:var(--g1);}
+.winner-banner{background:var(--g2);color:#fff;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:10px;margin-top:16px;box-shadow:0 4px 16px rgba(46,156,87,.3);}
+.winner-banner .icon{font-size:1.6rem;}
+.winner-banner div h4{font-size:.95rem;font-weight:700;}
+.winner-banner div p{font-size:.75rem;opacity:.9;}
+
+/* ============================================================
+   HOW TO USE
+============================================================ */
+#s-howto{background:linear-gradient(160deg,var(--g1),var(--g2));padding:36px 16px;}
+.howto-timeline{position:relative;padding-left:50px;margin-top:8px;}
+.howto-timeline::before{content:'';position:absolute;left:20px;top:10px;bottom:10px;width:2px;background:rgba(255,255,255,.3);}
+.howto-step{position:relative;margin-bottom:14px;}
+.howto-step .num{position:absolute;left:-50px;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;color:var(--g1);border:2px solid rgba(255,255,255,.4);}
+.howto-step:nth-child(1) .num{background:#ffe066;}
+.howto-step:nth-child(2) .num{background:#87ceeb;}
+.howto-step:nth-child(3) .num{background:#90ee90;}
+.howto-step:nth-child(4) .num{background:#ffb347;}
+.howto-card{background:rgba(255,255,255,.12);border-radius:12px;padding:14px 16px;border:1px solid rgba(255,255,255,.15);}
+.howto-card h4{font-size:.95rem;font-weight:700;color:#ffe066;margin-bottom:6px;display:flex;align-items:center;gap:6px;}
+.howto-card p{font-size:.83rem;color:rgba(255,255,255,.9);line-height:1.5;margin-bottom:4px;}
+.howto-card .tip{font-size:.75rem;background:rgba(255,255,255,.1);padding:4px 10px;border-radius:6px;display:inline-flex;align-items:center;gap:4px;color:rgba(255,255,255,.85);}
+
+/* ============================================================
+   CERTIFICATIONS
+============================================================ */
+#s-certs{background:var(--lgray);}
+.cert-card{background:#fff;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid var(--g2);}
+.cert-logo{width:56px;height:56px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;}
+.cert-logo.fssai{background:#e8f5ee;}
+.cert-logo.iso{background:#e3f2fd;}
+.cert-logo.gmp{background:#e8f5ee;}
+.cert-logo.nat{background:#f1f8e9;}
+.cert-logo.noside{background:#fff3e0;}
+.cert-card h4{font-size:.92rem;font-weight:700;color:var(--g1);margin-bottom:3px;}
+.cert-card p{font-size:.78rem;color:var(--gray);line-height:1.4;}
+
+/* ============================================================
+   PRICING
+============================================================ */
+#s-price{background:#fff;}
+.price-box{background:linear-gradient(135deg,#e8f5ee,#f0fff4);border-radius:16px;padding:24px 16px;border:2px solid var(--g3);max-width:400px;margin:0 auto;text-align:center;box-shadow:0 8px 32px rgba(46,156,87,.15);}
+.price-box .combo-label{background:var(--red);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:2px;padding:4px 14px;border-radius:12px;display:inline-block;margin-bottom:12px;text-transform:uppercase;}
+.orig-price{font-size:.9rem;color:#aaa;text-decoration:line-through;margin-bottom:2px;}
+.disc-price{font-size:2.8rem;font-weight:800;color:var(--red);line-height:1;font-family:'Baloo 2',cursive;}
+.save-tag{background:#fff3cd;color:#856404;font-size:.78rem;font-weight:700;padding:4px 12px;border-radius:8px;display:inline-block;margin:8px 0 16px;}
+.includes-list{text-align:left;margin-bottom:16px;}
+.inc-item{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid #d4edda;font-size:.88rem;color:var(--dark);}
+.inc-item:last-child{border-bottom:none;}
+.inc-item .ck{color:var(--g2);font-size:1rem;font-weight:700;}
+.btn-3d-green{display:block;width:100%;background:linear-gradient(180deg,#2ecc71 0%,#27ae60 50%,#1e8449 100%);color:#fff;padding:16px;border-radius:10px;font-size:1rem;font-weight:700;text-align:center;text-decoration:none;box-shadow:0 7px
